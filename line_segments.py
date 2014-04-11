@@ -38,7 +38,7 @@ if __name__ == '__main__':
         if w == 'p(e)':
             continue
 
-        for s in xrange(0, 400):
+        for s in xrange(0, 50):
             ref = all_refs[s]
             hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
             lines = []
