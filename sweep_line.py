@@ -35,7 +35,10 @@ def intersect_point(a1, a2):
     #c = 1
     #hyp = 2
     #ref = 3
-    x = (a1[1] - a2[1]) / (a2[0] - a1[0])
+    try:
+        x = (a1[1] - a2[1]) / (a2[0] - a1[0])
+    except:
+        return None, None, (None, None), None
     y = a1[0] * x + a1[1]
     return x, y, (a1[2], a2[2]) if a1[0] < a2[0]else (a2[2], a1[2]), a1[3]
 
