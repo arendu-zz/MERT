@@ -68,7 +68,7 @@ if __name__ == '__main__':
             else:
                 print x1, x2, 'vs', mx1, mx2
     print 'line segments...'
-    pprint(range_markers_dict)
+    #pprint(range_markers_dict)
     print 'bleu score for ranges...'
     pprint(compute_bleu_ranges(range_markers_dict))
 
