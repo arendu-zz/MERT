@@ -38,6 +38,8 @@ def intersect_point(a1, a2):
     try:
         x = (a1[1] - a2[1]) / (a2[0] - a1[0])
     except:
+        print 'returning none...'
+        print a1,a2
         return None, None, (None, None), None
     y = a1[0] * x + a1[1]
     return x, y, (a1[2], a2[2]) if a1[0] < a2[0]else (a2[2], a1[2]), a1[3]
