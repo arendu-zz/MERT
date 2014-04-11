@@ -8,13 +8,13 @@ import bleu
 
 def compute_bleu_ranges(range_marker):
     bleu_range_markers = {}
+    print 'computing bleu ranges...'
     for k, v in range_marker.items():
-        print k, len(v)
         stats = [0 for i in xrange(10)]
-        for (r, h) in v:
+        for (h, r) in v:
             stats = [sum(scores) for scores in zip(stats, bleu.bleu_stats(h, r))]
         bs = bleu.bleu(stats)
-        bleu_range_markers[k] = bs
+        bleu_range_markers[bs] = k
     return bleu_range_markers
 
 
@@ -33,7 +33,7 @@ if __name__ == '__main__':
     #find lines using first feature 'p(e)'
     num_sents = len(all_hyps) / 100
 
-    for s in xrange(0, 400):
+    for s in xrange(0, 200):
         ref = all_refs[s]
         hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
         lines = []
@@ -70,5 +70,5 @@ if __name__ == '__main__':
     print 'line segments...'
     #pprint(range_markers_dict)
     print 'bleu score for ranges...'
-    pprint(compute_bleu_ranges(range_markers_dict))
-
+    bleu_ranges = compute_bleu_ranges(range_markers_dict)
+    print max(bleu_ranges), bleu_ranges[max(bleu_ranges)]

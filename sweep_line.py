@@ -41,7 +41,7 @@ def intersect_point(a1, a2):
 
 
 if __name__ == '__main__':
-    seg = [[-0.5, 2, 'e1', 'e_ref'], [-0.95, -1, 'e2', 'e_ref'], [0.2, 1, 'e3', 'e_ref'], [5, -40, 'e4', 'e_ref']]
+    seg = [[-0.5, 2, '1 2 3 4', '1 3 2 1'], [-0.95, -1, 'e2', '1 3 2 1'], [0.2, 1, 'e3', '1 3 2 1'], [5, -40, 'e4', '1 3 2 1']]
     sorted_seg = sorted(seg)
     print get_upper_intersections(sorted_seg)
     print get_ranges(get_upper_intersections(sorted_seg))
