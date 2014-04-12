@@ -1,6 +1,7 @@
 __author__ = 'arenduchintala'
 from pprint import pprint
 import bleu
+import metrics
 
 
 def chain(points):
@@ -42,16 +43,22 @@ def get_upper_intersections(sort_seg):
     return upper
 
 
+def get_score(h, r):
+    #return metrics.get_ed_score(h, r)
+    return metrics.get_bleu_score(h, r)
+    #return metrics.get_meteor_score(h, r)
+
+
 def get_ranges(upper):
     upper_range = []
     for idx, (x, y, (h1, h2), href) in enumerate(upper):
         if idx == 0:
-            upper_range.append((float('-inf'), x, h1, href))
+            upper_range.append((float('-inf'), x, get_score(h1, href), (h1, href)))
         else:
-            upper_range.append((xp, x, h1, href))
+            upper_range.append((xp, x, get_score(h1, href), (h1, href)))
         xp = x
     #the last segment goes all the way to +infinity
-    upper_range.append((x, float('inf'), h2, href))
+    upper_range.append((x, float('inf'), get_score(h2, href), (h2, href)))
     return upper_range
 
 
@@ -60,24 +67,34 @@ def intersect_point(a1, a2):
     #c = 1
     #hyp = 2
     #ref = 3
-    try:
-        x = (a1[1] - a2[1]) / (a2[0] - a1[0])
-    except:
-        print 'returning none...', a1, a2
-        return None, None, (None, None), None
+    x = (a1[1] - a2[1]) / (a2[0] - a1[0])
     y = a1[0] * x + a1[1]
-    #return None, None, (None, None), None
     return x, y, (a1[2], a2[2]) if a1[0] < a2[0]else (a2[2], a1[2]), a1[3]
 
 
+def filter_highest_lines(segs):
+    slopes_to_max_intercept = {}
+    for m, c, h, r in segs:
+        if m in slopes_to_max_intercept:
+            if c > slopes_to_max_intercept[m][1]:
+                slopes_to_max_intercept[m] = [m, c, h, r]
+        else:
+            slopes_to_max_intercept[m] = [m, c, h, r]
+    return slopes_to_max_intercept.values()
+
+
 if __name__ == '__main__':
-    seg = [[-0.5, 2, 'A1', 'ref'], [-0.95, -1, 'B1', 'ref'], [0.2, 1, 'C1', 'ref'], [5, -40, 'D1', 'ref']]
-    seg2 = [[-0.15, 2, 'A2', 'ref2'], [-1.95, -1, 'B2', 'ref2'], [1.2, 1, 'C2', 'ref2'], [0.5, -40, 'D2', 'ref2']]
-    segs = [seg, seg2]
+    seg = [[-0.5, 2, 'A1', 'R1'], [-0.5, -1, 'B1', 'R1'], [0.2, 1, 'C1', 'R1'], [5, -40, 'D1', 'R1']]
+    #seg2 = [[-0.15, 2, 'A2', 'R2'], [-1.95, -1, 'B2', 'R2'], [1.2, 1, 'C2', 'R2'], [0.5, -40, 'D2', 'R2']]
+    segs = [seg]
 
     inflexion_points = []
     for s in segs:
-        sorted_seg = sorted(s)
+        print s
+        filter_seg = filter_highest_lines(s)
+        print filter_seg
+        sorted_seg = sorted(filter_seg)
+        print sorted_seg
         inflexion_points += get_ranges(get_upper_intersections(sorted_seg))
 
     inflexion_points.sort()
@@ -100,5 +117,5 @@ if __name__ == '__main__':
     print '\nrange markers filled\n'
     pprint(range_markers_dict)
 
-    print '\nrange markers bleu scores\n'
-    pprint(sum_bleu_scores_per_range(range_markers_dict))
+    #print '\nrange markers bleu scores\n'
+    #pprint(sum_bleu_scores_per_range(range_markers_dict))

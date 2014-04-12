@@ -1,9 +1,10 @@
 __author__ = 'arenduchintala'
 
 import optparse
+from random import shuffle
 from pprint import pprint
 import sweep_line as sl
-import bleu
+import itertools as it
 
 
 def mid_point((x1, x2)):
@@ -14,15 +15,14 @@ def mid_point((x1, x2)):
     return (x1 + x2) / 2.0
 
 
-def sum_bleu_scores_per_range(rd):
+def sum_scores_per_range(rd):
     ranges_in_val = {}
     for k, v in rd.items():
-        stats = [0 for i in xrange(10)]
-        for h, r in v:
-            stats = [sum(scores) for scores in zip(stats, bleu.bleu_stats(h, r))]
-        bs = bleu.bleu(stats)
-        ranges_in_val[bs] = ranges_in_val.get(bs, [])
-        ranges_in_val[bs].append(k)
+        score = 0.0
+        for hr_score, (hyp, ref) in v:
+            score += hr_score
+        ranges_in_val[score] = ranges_in_val.get(score, [])
+        ranges_in_val[score].append(k)
     return ranges_in_val
 
 
@@ -39,51 +39,58 @@ if __name__ == '__main__':
     all_refs = [ref.strip() for ref in open(opts.reference)]
     num_sents = len(all_hyps) / 100
 
-    for w in weights:
-        print 'current weights', weights
-        inflexion_points = []
-        for s in xrange(0, 4):
-            ref = all_refs[s]
-            hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
-            lines = []
-            for (num, hyp, feats) in hyps_for_one_sent:
-                #compute c and m
-                c = 0.0
-                m = 0.0
-                for feat in feats.split(' '):
-                    (k, v) = feat.split('=')
-                    if k != w:
-                        c += weights[k] * float(v)
-                    else:
-                        #compute m
-                        m += weights[k] * float(v)
-                lines.append((m, c, hyp, ref))
-            sorted_lines = sorted(lines)
-            ip = sl.get_ranges(sl.get_upper_intersections(sorted_lines))
-            inflexion_points += ip
+    permutations = it.permutations(weights.keys())
+    for p in xrange(100):
+        wts = list(weights.keys())
+        shuffle(wts)
+        for w in wts:
+            print 'current weights', weights
+            inflexion_points = []
+            for s in xrange(0, 400):
+                ref = all_refs[s]
+                hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
+                hyp_lines = []
+                for (num, hyp, feats) in hyps_for_one_sent:
+                    #compute c and m
+                    c = 0.0
+                    m = 0.0
+                    for feat in feats.split(' '):
+                        (k, v) = feat.split('=')
+                        if k != w:
+                            c += weights[k] * float(v)
+                        else:
+                            #compute m
+                            m += weights[k] * float(v)
+                    hyp_lines.append((m, c, hyp, ref))
 
-        inflexion_points.sort()
-        pprint(inflexion_points)
-        print '\n'
-        ranges = [(x1, x2) for x1, x2, hyp, ref in inflexion_points]
-        range_markers_key = list(set(sl.chain(ranges)))
-        range_markers_key.sort()
-        print '\nrange markers key\n', range_markers_key
-        range_markers_dict = dict(((range_markers_key[i], range_markers_key[i + 1]), []) for i in xrange(len(range_markers_key) - 1))
-        print '\nrange markers_dict\n',
-        pprint(range_markers_dict)
+                filtered_hyp_lines = sl.filter_highest_lines(hyp_lines)
+                sorted_hyp_lines = sorted(filtered_hyp_lines)
+                ip = sl.get_ranges(sl.get_upper_intersections(sorted_hyp_lines))
+                inflexion_points += ip
 
-        for (x1, x2, h, r) in inflexion_points:
-            for mx1, mx2 in sorted(range_markers_dict):
-                if x1 <= mx1 and mx2 <= x2:
-                    range_markers_dict[mx1, mx2].append((h, r))
+            inflexion_points.sort()
+            #pprint(inflexion_points)
 
-        print 'line segments...'
-        #pprint(range_markers_dict)
-        bleu_ranges = sum_bleu_scores_per_range(range_markers_dict)
-        print '\nrange markers bleu scores\n'
-        pprint(bleu_ranges)
-        print 'max', max(bleu_ranges), mid_point(min(bleu_ranges[max(bleu_ranges)]))
-        weights[w] = mid_point(min(bleu_ranges[max(bleu_ranges)]))
-        print 'setting ', w, 'to', weights[w]
-    print 'final weights', weights
+            ranges = [(x1, x2) for x1, x2, hyp, ref in inflexion_points]
+            range_markers_key = list(set(sl.chain(ranges)))
+            range_markers_key.sort()
+            #print '\nrange markers key\n', range_markers_key
+            range_markers_dict = dict(((range_markers_key[i], range_markers_key[i + 1]), []) for i in xrange(len(range_markers_key) - 1))
+            #print '\nrange markers_dict\n',
+            #pprint(range_markers_dict)
+
+            for (x1, x2, h, r) in inflexion_points:
+                for mx1, mx2 in sorted(range_markers_dict):
+                    if x1 <= mx1 and mx2 <= x2:
+                        range_markers_dict[mx1, mx2].append((h, r))
+
+            #print 'line segments...'
+            #pprint(range_markers_dict)
+            score_ranges = sum_scores_per_range(range_markers_dict)
+            #print '\nrange markers bleu scores\n'
+            #pprint(score_ranges)
+
+            #print 'max score', max(score_ranges), 'max ranges', score_ranges[max(score_ranges)]
+            weights[w] = mid_point(min(score_ranges[max(score_ranges)]))
+            print 'setting ', w, 'to', weights[w]
+        print 'final weights at iteration', p, 'weights:', weights
