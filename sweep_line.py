@@ -1,11 +1,24 @@
 __author__ = 'arenduchintala'
 from pprint import pprint
+import bleu
 
 
 def chain(points):
     for p in points:
         yield p[0]
         yield p[1]
+
+
+def sum_bleu_scores_per_range(range_marker_dict):
+    range_bleu_scores = {}
+    for k, v in range_markers_dict.items():
+        sum_bs = 0.0
+        for h, r in v:
+            b_stats = bleu.bleu_stats(h, r)
+            bs = bleu.bleu(b_stats)
+            sum_bs += bs
+        range_bleu_scores[k] = sum_bs
+    return range_bleu_scores
 
 
 def get_upper_intersections(sort_seg):
@@ -84,5 +97,8 @@ if __name__ == '__main__':
             if x1 <= mx1 and mx2 <= x2:
                 range_markers_dict[mx1, mx2].append((h, r))
 
-    print '\nrange markers filled\n',
+    print '\nrange markers filled\n'
     pprint(range_markers_dict)
+
+    print '\nrange markers bleu scores\n'
+    pprint(sum_bleu_scores_per_range(range_markers_dict))

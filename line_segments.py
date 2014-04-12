@@ -6,16 +6,24 @@ import sweep_line as sl
 import bleu
 
 
-def compute_bleu_ranges(range_marker):
-    bleu_range_markers = {}
-    print 'computing bleu ranges...'
-    for k, v in range_marker.items():
+def mid_point((x1, x2)):
+    if x1 == float('-inf'):
+        return x2 - 0.1
+    if x2 == float('inf'):
+        return x1 + 0.1
+    return (x1 + x2) / 2.0
+
+
+def sum_bleu_scores_per_range(rd):
+    ranges_in_val = {}
+    for k, v in rd.items():
         stats = [0 for i in xrange(10)]
-        for (h, r) in v:
+        for h, r in v:
             stats = [sum(scores) for scores in zip(stats, bleu.bleu_stats(h, r))]
         bs = bleu.bleu(stats)
-        bleu_range_markers[bs] = k
-    return bleu_range_markers
+        ranges_in_val[bs] = ranges_in_val.get(bs, [])
+        ranges_in_val[bs].append(k)
+    return ranges_in_val
 
 
 if __name__ == '__main__':
@@ -34,7 +42,7 @@ if __name__ == '__main__':
     for w in weights:
         print 'current weights', weights
         inflexion_points = []
-        for s in xrange(0, 100):
+        for s in xrange(0, 4):
             ref = all_refs[s]
             hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
             lines = []
@@ -62,7 +70,6 @@ if __name__ == '__main__':
         range_markers_key.sort()
         print '\nrange markers key\n', range_markers_key
         range_markers_dict = dict(((range_markers_key[i], range_markers_key[i + 1]), []) for i in xrange(len(range_markers_key) - 1))
-        #range_markers_dict[(inflexion_points[-1][0], inflexion_points[-1][1])] = []
         print '\nrange markers_dict\n',
         pprint(range_markers_dict)
 
@@ -73,9 +80,10 @@ if __name__ == '__main__':
 
         print 'line segments...'
         #pprint(range_markers_dict)
-        print 'bleu score for ranges...'
-        bleu_ranges = compute_bleu_ranges(range_markers_dict)
-        print max(bleu_ranges), bleu_ranges[max(bleu_ranges)]
-        weights[w] = (bleu_ranges[max(bleu_ranges)][0] + bleu_ranges[max(bleu_ranges)][1]) / 2
+        bleu_ranges = sum_bleu_scores_per_range(range_markers_dict)
+        print '\nrange markers bleu scores\n'
+        pprint(bleu_ranges)
+        print 'max', max(bleu_ranges), mid_point(min(bleu_ranges[max(bleu_ranges)]))
+        weights[w] = mid_point(min(bleu_ranges[max(bleu_ranges)]))
         print 'setting ', w, 'to', weights[w]
     print 'final weights', weights
