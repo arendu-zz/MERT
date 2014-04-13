@@ -1,9 +1,10 @@
 __author__ = 'arenduchintala'
 
 import optparse
-from random import shuffle
 import sweep_line as sl
 import bleu
+import os
+from pprint import pprint
 
 
 def mid_point((x1, x2)):
@@ -24,7 +25,7 @@ def sum_scores_per_range(rd, method):
             bs = bleu.bleu(stats)
             ranges_in_val[bs] = ranges_in_val.get(bs, [])
             ranges_in_val[bs].append(k)
-    elif method == 'ed':
+    else:
         for k, v in rd.items():
             stats = 0.0
             for hr_score, (hyp, ref) in v:
@@ -39,74 +40,89 @@ if __name__ == '__main__':
     optparser.add_option("-k", "--kbest-list", dest="input", default="data/train.100best", help="100-best translation lists")
     optparser.add_option("-r", "--reference", dest="reference", default="data/train.ref", help="Target language reference sentences")
     optparser.add_option("-l", "--lm", dest="lm", default=-1.0, type="float", help="Language model weight")
-    optparser.add_option("-t", "--tm1", dest="tm1", default=-0.5, type="float", help="Translation model p(e|f) weight")
-    optparser.add_option("-s", "--tm2", dest="tm2", default=-0.5, type="float", help="Lexical translation model p_lex(f|e) weight")
-    optparser.add_option("-m", "--ef", dest="error_function", default="bleu", help="use bleu , editdistance or meteor")
+    optparser.add_option("-t", "--tm1", dest="tm1", default=-1.0, type="float", help="Translation model p(e|f) weight")
+    optparser.add_option("-s", "--tm2", dest="tm2", default=-1.0, type="float", help="Lexical translation model p_lex(f|e) weight")
+    optparser.add_option("-m", "--ef", dest="error_function", default="meteor", help="use bleu , editdistance or meteor")
 
     (opts, _) = optparser.parse_args()
     weights = {'p(e)': float(opts.lm), 'p(e|f)': float(opts.tm1), 'p_lex(f|e)': float(opts.tm2)}
+    weights_cmd = {'p(e)': '-l', 'p(e|f)': '-t', 'p_lex(f|e)': '-s'}
     all_hyps = [pair.split(' ||| ') for pair in open(opts.input)]
     all_refs = [ref.strip() for ref in open(opts.reference)]
     num_sents = len(all_hyps) / 100
     ef = opts.error_function
     #permutations = it.permutations(weights.keys())
-    wts = list(weights.keys())
-    for p in xrange(3):
-        wts.append(wts.pop(0))
-        #shuffle(wts)
-        print 'iteration', p
-        for w in wts:
-            print '\ttuning', w
-            inflexion_points = []
-            for s in xrange(0, 400):
-                ref = all_refs[s]
-                hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
-                hyp_lines = []
-                for (num, hyp, feats) in hyps_for_one_sent:
-                    #compute c and m
-                    c = 0.0
-                    m = 0.0
-                    for feat in feats.split(' '):
-                        (k, v) = feat.split('=')
-                        if k != w:
-                            c += weights[k] * float(v)
-                        else:
-                            #compute m
-                            m = float(v)
-                    hyp_lines.append((m, c, hyp, ref))
 
-                filtered_hyp_lines = sl.filter_highest_lines(hyp_lines)
-                sorted_hyp_lines = sorted(filtered_hyp_lines)
-                ip = sl.get_ranges(sl.get_upper_intersections(sorted_hyp_lines), method=ef)
-                inflexion_points += ip
+    print '\n******************MERT Run Instance********************'
+    print 'method:', opts.error_function
+    print 'data train:', opts.input
+    print 'data reference:', opts.reference
+    print 'initial feature values:', weights
+    for o in xrange(3):
+        weights = {'p(e)': float(opts.lm), 'p(e|f)': float(opts.tm1), 'p_lex(f|e)': float(opts.tm2)}
+        wts = list(weights.keys())
+        for _ in xrange(o):
+            wts.append(wts.pop(0))
+        print '\ninitial ordering:', wts
+        for p in xrange(5):
+            print '\niteration', p
+            for w in wts:
+                inflexion_points = []
+                for s in xrange(0, 400):
+                    ref = all_refs[s]
+                    hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
+                    hyp_lines = []
+                    for (num, hyp, feats) in hyps_for_one_sent:
+                        #compute c and m
+                        c = 0.0
+                        m = 0.0
+                        for feat in feats.split(' '):
+                            (k, v) = feat.split('=')
+                            if k != w:
+                                c += weights[k] * float(v)
+                            else:
+                                #compute m
+                                m = float(v)
+                        hyp_lines.append((m, c, hyp, ref))
 
-            inflexion_points.sort()
-            #pprint(inflexion_points)
+                    filtered_hyp_lines = sl.filter_highest_lines(hyp_lines)
+                    sorted_hyp_lines = sorted(filtered_hyp_lines)
+                    ip = sl.get_ranges(sl.get_upper_intersections(sorted_hyp_lines), method=ef)
+                    inflexion_points += ip
 
-            ranges = [(x1, x2) for x1, x2, hyp, ref in inflexion_points]
-            range_markers_key = list(set(sl.chain(ranges)))
-            range_markers_key.sort()
-            #print '\nrange markers key\n', range_markers_key
-            range_markers_dict = dict(((range_markers_key[i], range_markers_key[i + 1]), []) for i in xrange(len(range_markers_key) - 1))
-            #print '\nrange markers_dict\n',
-            #pprint(range_markers_dict)
+                inflexion_points.sort()
+                #pprint(inflexion_points)
 
-            for (x1, x2, h, r) in inflexion_points:
-                for mx1, mx2 in sorted(range_markers_dict):
-                    if x1 <= mx1 and mx2 <= x2:
-                        range_markers_dict[mx1, mx2].append((h, r))
+                ranges = [(x1, x2) for x1, x2, hyp, ref in inflexion_points]
+                range_markers_key = list(set(sl.chain(ranges)))
+                range_markers_key.sort()
+                #print '\nrange markers key\n', range_markers_key
+                range_markers_dict = dict(
+                    ((range_markers_key[i], range_markers_key[i + 1]), []) for i in xrange(len(range_markers_key) - 1))
+                #print '\nrange markers_dict\n',
+                #pprint(range_markers_dict)
 
-            #print 'line segments...'
-            #pprint(range_markers_dict)
-            score_ranges = sum_scores_per_range(range_markers_dict, method=ef)
-            #print '\nrange markers bleu scores\n'
-            #pprint(score_ranges)
-            #for idx, k in enumerate(sorted(score_ranges, reverse=True)):
-            #    print idx, 'max score', k, score_ranges[k]
-            #    if idx == 5:
-            #        break
+                for (x1, x2, h, r) in inflexion_points:
+                    for mx1, mx2 in sorted(range_markers_dict):
+                        if x1 <= mx1 and mx2 <= x2:
+                            range_markers_dict[mx1, mx2].append((h, r))
 
-            #print 'max score', max(score_ranges), 'max ranges', score_ranges[max(score_ranges)]
-            weights[w] = mid_point(min(score_ranges[max(score_ranges)]))
-            print '\tsetting ', w, 'to', weights[w]
-        print 'final weights at iteration', p, ' is:', weights
+                #print 'line segments...'
+                #pprint(range_markers_dict)
+                score_ranges = sum_scores_per_range(range_markers_dict, method=ef)
+                #print '\nrange markers bleu scores\n'
+                #pprint(score_ranges)
+                #for idx, k in enumerate(sorted(score_ranges, reverse=True)):
+                #    print idx, 'max score', k, score_ranges[k]
+                #    if idx == 5:
+                #        break
+
+                #print 'max score', max(score_ranges), 'max ranges', score_ranges[max(score_ranges)]
+                print '\tsetting ', w, 'from', weights[w], 'to', mid_point(min(score_ranges[max(score_ranges)]))
+                weights[w] = mid_point(min(score_ranges[max(score_ranges)]))
+
+            print 'final weights at iteration', p, ' is:', weights
+            cmd_opts = ' '.join([str(weights_cmd[i] + ' ' + str(weights[i])) for i in weights])
+            cmd = 'python rerank ' + cmd_opts + ' | python compute-bleu'
+            print cmd
+            os.system(cmd)
