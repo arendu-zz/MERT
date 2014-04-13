@@ -43,22 +43,25 @@ def get_upper_intersections(sort_seg):
     return upper
 
 
-def get_score(h, r):
-    return metrics.get_ed_score(h, r)
-    #return metrics.get_bleu_stats(h, r)
-    #return metrics.get_meteor_score(h, r)
+def get_score(h, r, method):
+    if method == 'ed':
+        return metrics.get_ed_score(h, r)
+    elif method == 'bleu':
+        return metrics.get_bleu_stats(h, r)
+    else:
+        return metrics.get_meteor_score(h, r)
 
 
-def get_ranges(upper):
+def get_ranges(upper, method='bleu'):
     upper_range = []
     for idx, (x, y, (h1, h2), href) in enumerate(upper):
         if idx == 0:
-            upper_range.append((float('-inf'), x, get_score(h1, href), (h1, href)))
+            upper_range.append((float('-inf'), x, get_score(h1, href, method), (h1, href)))
         else:
-            upper_range.append((xp, x, get_score(h1, href), (h1, href)))
+            upper_range.append((xp, x, get_score(h1, href, method), (h1, href)))
         xp = x
     #the last segment goes all the way to +infinity
-    upper_range.append((x, float('inf'), get_score(h2, href), (h2, href)))
+    upper_range.append((x, float('inf'), get_score(h2, href, method), (h2, href)))
     return upper_range
 
 
