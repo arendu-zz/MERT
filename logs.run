@@ -1,0 +1,1764 @@
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -0.5}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.377739642807
+setting  p_lex(f|e) from -0.5 to -0.635279317398
+setting  p(e|f) from -0.5 to -0.501497323343
+final weights at iteration 0  is: {'p(e)': -0.377739642807407, 'p_lex(f|e)': -0.6352793173979062, 'p(e|f)': -0.5014973233427846}
+python rerank -l -0.377739642807 -s -0.635279317398 -t -0.501497323343 | python compute-bleu
+bleu on dev: 0.274914883767
+
+
+iteration 1
+setting  p(e) from -0.377739642807 to -0.377787442502
+setting  p_lex(f|e) from -0.635279317398 to -0.621758442644
+setting  p(e|f) from -0.501497323343 to -0.501969367001
+final weights at iteration 1  is: {'p(e)': -0.3777874425024839, 'p_lex(f|e)': -0.6217584426444833, 'p(e|f)': -0.5019693670013843}
+python rerank -l -0.377787442502 -s -0.621758442644 -t -0.501969367001 | python compute-bleu
+bleu on dev: 0.274533530324
+
+
+iteration 2
+setting  p(e) from -0.377787442502 to -0.37700830844
+setting  p_lex(f|e) from -0.621758442644 to -0.624588742214
+setting  p(e|f) from -0.501969367001 to -0.502556393885
+final weights at iteration 2  is: {'p(e)': -0.3770083084402216, 'p_lex(f|e)': -0.6245887422137892, 'p(e|f)': -0.5025563938850558}
+python rerank -l -0.37700830844 -s -0.624588742214 -t -0.502556393885 | python compute-bleu
+bleu on dev: 0.274444708979
+
+
+iteration 3
+setting  p(e) from -0.37700830844 to -0.373286568043
+setting  p_lex(f|e) from -0.624588742214 to -0.624591897921
+setting  p(e|f) from -0.502556393885 to -0.502527481476
+final weights at iteration 3  is: {'p(e)': -0.3732865680427908, 'p_lex(f|e)': -0.6245918979210443, 'p(e|f)': -0.5025274814759685}
+python rerank -l -0.373286568043 -s -0.624591897921 -t -0.502527481476 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 4
+setting  p(e) from -0.373286568043 to -0.373282279027
+setting  p_lex(f|e) from -0.624591897921 to -0.624595439243
+setting  p(e|f) from -0.502527481476 to -0.502495036089
+final weights at iteration 4  is: {'p(e)': -0.3732822790271365, 'p_lex(f|e)': -0.6245954392427827, 'p(e|f)': -0.5024950360890733}
+python rerank -l -0.373282279027 -s -0.624595439243 -t -0.502495036089 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.8561739465
+setting  p(e|f) from -0.5 to -1.30314593902
+setting  p(e) from -1.0 to -1.00062559006
+final weights at iteration 0  is: {'p(e)': -1.0006255900596415, 'p_lex(f|e)': -1.8561739465008633, 'p(e|f)': -1.30314593902339}
+python rerank -l -1.00062559006 -s -1.8561739465 -t -1.30314593902 | python compute-bleu
+bleu on dev: 0.272237905985
+
+
+iteration 1
+setting  p_lex(f|e) from -1.8561739465 to -1.7420073391
+setting  p(e|f) from -1.30314593902 to -1.302397657
+setting  p(e) from -1.00062559006 to -1.00242827577
+final weights at iteration 1  is: {'p(e)': -1.0024282757739842, 'p_lex(f|e)': -1.7420073391017539, 'p(e|f)': -1.3023976569993891}
+python rerank -l -1.00242827577 -s -1.7420073391 -t -1.302397657 | python compute-bleu
+bleu on dev: 0.273735373793
+
+
+iteration 2
+setting  p_lex(f|e) from -1.7420073391 to -1.73490648409
+setting  p(e|f) from -1.302397657 to -1.30198745307
+setting  p(e) from -1.00242827577 to -1.00239886541
+final weights at iteration 2  is: {'p(e)': -1.0023988654063998, 'p_lex(f|e)': -1.7349064840908728, 'p(e|f)': -1.3019874530737727}
+python rerank -l -1.00239886541 -s -1.73490648409 -t -1.30198745307 | python compute-bleu
+bleu on dev: 0.273735373793
+
+
+iteration 3
+setting  p_lex(f|e) from -1.73490648409 to -1.73485084141
+setting  p(e|f) from -1.30198745307 to -1.3019353565
+setting  p(e) from -1.00239886541 to -1.00236698275
+final weights at iteration 3  is: {'p(e)': -1.0023669827495238, 'p_lex(f|e)': -1.7348508414100567, 'p(e|f)': -1.3019353565016787}
+python rerank -l -1.00236698275 -s -1.73485084141 -t -1.3019353565 | python compute-bleu
+bleu on dev: 0.273735373793
+
+
+iteration 4
+setting  p_lex(f|e) from -1.73485084141 to -1.73479552591
+setting  p(e|f) from -1.3019353565 to -1.30189354749
+setting  p(e) from -1.00236698275 to -1.00233503007
+final weights at iteration 4  is: {'p(e)': -1.002335030068068, 'p_lex(f|e)': -1.7347955259134773, 'p(e|f)': -1.3018935474920292}
+python rerank -l -1.00233503007 -s -1.73479552591 -t -1.30189354749 | python compute-bleu
+bleu on dev: 0.273735373793
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -0.5 to -1.82165964719
+setting  p(e) from -1.0 to -0.284907128822
+setting  p_lex(f|e) from -0.5 to -1.2719267323
+final weights at iteration 0  is: {'p(e)': -0.28490712882152147, 'p_lex(f|e)': -1.2719267323044285, 'p(e|f)': -1.8216596471920572}
+python rerank -l -0.284907128822 -s -1.2719267323 -t -1.82165964719 | python compute-bleu
+bleu on dev: 0.26856302208
+
+
+iteration 1
+setting  p(e|f) from -1.82165964719 to -1.82346244374
+setting  p(e) from -0.284907128822 to -0.284478307853
+setting  p_lex(f|e) from -1.2719267323 to -1.27141560226
+final weights at iteration 1  is: {'p(e)': -0.28447830785333744, 'p_lex(f|e)': -1.2714156022608192, 'p(e|f)': -1.8234624437398101}
+python rerank -l -0.284478307853 -s -1.27141560226 -t -1.82346244374 | python compute-bleu
+bleu on dev: 0.26856302208
+
+
+iteration 2
+setting  p(e|f) from -1.82346244374 to -1.82544581146
+setting  p(e) from -0.284478307853 to -0.284201690674
+setting  p_lex(f|e) from -1.27141560226 to -1.27133922656
+final weights at iteration 2  is: {'p(e)': -0.28420169067420353, 'p_lex(f|e)': -1.2713392265611851, 'p(e|f)': -1.825445811464687}
+python rerank -l -0.284201690674 -s -1.27133922656 -t -1.82544581146 | python compute-bleu
+bleu on dev: 0.268347943887
+
+
+iteration 3
+setting  p(e|f) from -1.82544581146 to -1.82507994681
+setting  p(e) from -0.284201690674 to -0.284173119805
+setting  p_lex(f|e) from -1.27133922656 to -1.27115511219
+final weights at iteration 3  is: {'p(e)': -0.284173119805294, 'p_lex(f|e)': -1.2711551121914686, 'p(e|f)': -1.8250799468075907}
+python rerank -l -0.284173119805 -s -1.27115511219 -t -1.82507994681 | python compute-bleu
+bleu on dev: 0.268347943887
+
+
+iteration 4
+setting  p(e|f) from -1.82507994681 to -1.82482806609
+setting  p(e) from -0.284173119805 to -0.284132523744
+setting  p_lex(f|e) from -1.27115511219 to -1.27097624999
+final weights at iteration 4  is: {'p(e)': -0.2841325237436222, 'p_lex(f|e)': -1.2709762499853863, 'p(e|f)': -1.824828066087266}
+python rerank -l -0.284132523744 -s -1.27097624999 -t -1.82482806609 | python compute-bleu
+bleu on dev: 0.268347943887
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.755479285615
+setting  p_lex(f|e) from -1.0 to -1.2705586348
+setting  p(e|f) from -1.0 to -1.00299464669
+final weights at iteration 0  is: {'p(e)': -0.755479285614814, 'p_lex(f|e)': -1.2705586347958124, 'p(e|f)': -1.0029946466855693}
+python rerank -l -0.755479285615 -s -1.2705586348 -t -1.00299464669 | python compute-bleu
+bleu on dev: 0.274914883767
+
+
+iteration 1
+setting  p(e) from -0.755479285615 to -0.755574885005
+setting  p_lex(f|e) from -1.2705586348 to -1.24351688529
+setting  p(e|f) from -1.00299464669 to -1.003938734
+final weights at iteration 1  is: {'p(e)': -0.7555748850049678, 'p_lex(f|e)': -1.2435168852889666, 'p(e|f)': -1.0039387340027686}
+python rerank -l -0.755574885005 -s -1.24351688529 -t -1.003938734 | python compute-bleu
+bleu on dev: 0.274533530324
+
+
+iteration 2
+setting  p(e) from -0.755574885005 to -0.75401661688
+setting  p_lex(f|e) from -1.24351688529 to -1.24917748443
+setting  p(e|f) from -1.003938734 to -1.00511278777
+final weights at iteration 2  is: {'p(e)': -0.7540166168804432, 'p_lex(f|e)': -1.2491774844275785, 'p(e|f)': -1.0051127877701116}
+python rerank -l -0.75401661688 -s -1.24917748443 -t -1.00511278777 | python compute-bleu
+bleu on dev: 0.274444708979
+
+
+iteration 3
+setting  p(e) from -0.75401661688 to -0.746573136086
+setting  p_lex(f|e) from -1.24917748443 to -1.24918379584
+setting  p(e|f) from -1.00511278777 to -1.00505496295
+final weights at iteration 3  is: {'p(e)': -0.7465731360855816, 'p_lex(f|e)': -1.2491837958420886, 'p(e|f)': -1.005054962951937}
+python rerank -l -0.746573136086 -s -1.24918379584 -t -1.00505496295 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 4
+setting  p(e) from -0.746573136086 to -0.746564558054
+setting  p_lex(f|e) from -1.24918379584 to -1.24919087849
+setting  p(e|f) from -1.00505496295 to -1.00499007218
+final weights at iteration 4  is: {'p(e)': -0.746564558054273, 'p_lex(f|e)': -1.2491908784855654, 'p(e|f)': -1.0049900721781466}
+python rerank -l -0.746564558054 -s -1.24919087849 -t -1.00499007218 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -1.58246232986
+setting  p(e|f) from -1.0 to -1.35455607924
+setting  p(e) from -1.0 to -1.00438863947
+final weights at iteration 0  is: {'p(e)': -1.0043886394689299, 'p_lex(f|e)': -1.5824623298604465, 'p(e|f)': -1.3545560792353812}
+python rerank -l -1.00438863947 -s -1.58246232986 -t -1.35455607924 | python compute-bleu
+bleu on dev: 0.274254717042
+
+
+iteration 1
+setting  p_lex(f|e) from -1.58246232986 to -1.66980288152
+setting  p(e|f) from -1.35455607924 to -1.34116313344
+setting  p(e) from -1.00438863947 to -0.997353560712
+final weights at iteration 1  is: {'p(e)': -0.9973535607120425, 'p_lex(f|e)': -1.669802881516575, 'p(e|f)': -1.3411631334379142}
+python rerank -l -0.997353560712 -s -1.66980288152 -t -1.34116313344 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 2
+setting  p_lex(f|e) from -1.66980288152 to -1.66980857906
+setting  p(e|f) from -1.34116313344 to -1.34100336987
+setting  p(e) from -0.997353560712 to -0.997347269812
+final weights at iteration 2  is: {'p(e)': -0.9973472698124873, 'p_lex(f|e)': -1.6698085790640689, 'p(e|f)': -1.3410033698710093}
+python rerank -l -0.997347269812 -s -1.66980857906 -t -1.34100336987 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 3
+setting  p_lex(f|e) from -1.66980857906 to -1.6698249806
+setting  p(e|f) from -1.34100336987 to -1.34094952939
+setting  p(e) from -0.997347269812 to -0.997335578485
+final weights at iteration 3  is: {'p(e)': -0.9973355784845102, 'p_lex(f|e)': -1.6698249805955656, 'p(e|f)': -1.340949529388526}
+python rerank -l -0.997335578485 -s -1.6698249806 -t -1.34094952939 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 4
+setting  p_lex(f|e) from -1.6698249806 to -1.66985546204
+setting  p(e|f) from -1.34094952939 to -1.3408494695
+setting  p(e) from -0.997335578485 to -0.997313850725
+final weights at iteration 4  is: {'p(e)': -0.9973138507254238, 'p_lex(f|e)': -1.6698554620366577, 'p(e|f)': -1.340849469495002}
+python rerank -l -0.997313850725 -s -1.66985546204 -t -1.3408494695 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.09845778633
+setting  p(e) from -1.0 to -0.293766805603
+setting  p_lex(f|e) from -1.0 to -1.00036364208
+final weights at iteration 0  is: {'p(e)': -0.2937668056025039, 'p_lex(f|e)': -1.000363642079357, 'p(e|f)': -2.0984577863256852}
+python rerank -l -0.293766805603 -s -1.00036364208 -t -2.09845778633 | python compute-bleu
+bleu on dev: 0.269429081634
+
+
+iteration 1
+setting  p(e|f) from -2.09845778633 to -2.14343713723
+setting  p(e) from -0.293766805603 to -0.280286686894
+setting  p_lex(f|e) from -1.00036364208 to -0.99942434258
+final weights at iteration 1  is: {'p(e)': -0.28028668689418024, 'p_lex(f|e)': -0.9994243425803033, 'p(e|f)': -2.1434371372322523}
+python rerank -l -0.280286686894 -s -0.99942434258 -t -2.14343713723 | python compute-bleu
+bleu on dev: 0.268487958696
+
+
+iteration 2
+setting  p(e|f) from -2.14343713723 to -0.520165347449
+setting  p(e) from -0.280286686894 to -0.536585451902
+setting  p_lex(f|e) from -0.99942434258 to -0.99902662572
+final weights at iteration 2  is: {'p(e)': -0.5365854519024883, 'p_lex(f|e)': -0.9990266257203553, 'p(e|f)': -0.5201653474485242}
+python rerank -l -0.536585451902 -s -0.99902662572 -t -0.520165347449 | python compute-bleu
+bleu on dev: 0.276918169041
+
+
+iteration 3
+setting  p(e|f) from -0.520165347449 to -0.7007262396
+setting  p(e) from -0.536585451902 to -0.536750644637
+setting  p_lex(f|e) from -0.99902662572 to -0.935852913699
+final weights at iteration 3  is: {'p(e)': -0.5367506446372976, 'p_lex(f|e)': -0.9358529136985119, 'p(e|f)': -0.7007262395996956}
+python rerank -l -0.536750644637 -s -0.935852913699 -t -0.7007262396 | python compute-bleu
+bleu on dev: 0.273656386219
+
+
+iteration 4
+setting  p(e|f) from -0.7007262396 to -0.700460471526
+setting  p(e) from -0.536750644637 to -0.537875503404
+setting  p_lex(f|e) from -0.935852913699 to -0.936370989631
+final weights at iteration 4  is: {'p(e)': -0.5378755034042068, 'p_lex(f|e)': -0.9363709896311125, 'p(e|f)': -0.7004604715255451}
+python rerank -l -0.537875503404 -s -0.936370989631 -t -0.700460471526 | python compute-bleu
+bleu on dev: 0.273656386219
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.159904750798
+setting  p_lex(f|e) from -0.5 to -0.704260005553
+setting  p(e|f) from -1.0 to -1.00003689836
+final weights at iteration 0  is: {'p(e)': -0.1599047507978128, 'p_lex(f|e)': -0.7042600055530437, 'p(e|f)': -1.0000368983570935}
+python rerank -l -0.159904750798 -s -0.704260005553 -t -1.00003689836 | python compute-bleu
+bleu on dev: 0.268408741849
+
+
+iteration 1
+setting  p(e) from -0.159904750798 to -0.159573539194
+setting  p_lex(f|e) from -0.704260005553 to -0.704106622985
+setting  p(e|f) from -1.00003689836 to -1.00029899103
+final weights at iteration 1  is: {'p(e)': -0.15957353919358008, 'p_lex(f|e)': -0.7041066229848008, 'p(e|f)': -1.0002989910263789}
+python rerank -l -0.159573539194 -s -0.704106622985 -t -1.00029899103 | python compute-bleu
+bleu on dev: 0.268623873173
+
+
+iteration 2
+setting  p(e) from -0.159573539194 to -0.159516235329
+setting  p_lex(f|e) from -0.704106622985 to -0.704141468065
+setting  p(e|f) from -1.00029899103 to -1.00021136319
+final weights at iteration 2  is: {'p(e)': -0.15951623532895332, 'p_lex(f|e)': -0.7041414680645799, 'p(e|f)': -1.0002113631909437}
+python rerank -l -0.159516235329 -s -0.704141468065 -t -1.00021136319 | python compute-bleu
+bleu on dev: 0.268623873173
+
+
+iteration 3
+setting  p(e) from -0.159516235329 to -0.15950857787
+setting  p_lex(f|e) from -0.704141468065 to -0.704093125189
+setting  p(e|f) from -1.00021136319 to -1.00014962187
+final weights at iteration 3  is: {'p(e)': -0.1595085778696897, 'p_lex(f|e)': -0.7040931251888054, 'p(e|f)': -1.0001496218720523}
+python rerank -l -0.15950857787 -s -0.704093125189 -t -1.00014962187 | python compute-bleu
+bleu on dev: 0.268623873173
+
+
+iteration 4
+setting  p(e) from -0.15950857787 to -0.159498412513
+setting  p_lex(f|e) from -0.704093125189 to -0.704048988615
+setting  p(e|f) from -1.00014962187 to -1.00008657671
+final weights at iteration 4  is: {'p(e)': -0.1594984125130432, 'p_lex(f|e)': -0.7040489886149871, 'p(e|f)': -1.0000865767113198}
+python rerank -l -0.159498412513 -s -0.704048988615 -t -1.00008657671 | python compute-bleu
+bleu on dev: 0.268623873173
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.58246232986
+setting  p(e|f) from -1.0 to -1.35455607924
+setting  p(e) from -1.0 to -1.00438863947
+final weights at iteration 0  is: {'p(e)': -1.0043886394689299, 'p_lex(f|e)': -1.5824623298604465, 'p(e|f)': -1.3545560792353812}
+python rerank -l -1.00438863947 -s -1.58246232986 -t -1.35455607924 | python compute-bleu
+bleu on dev: 0.274254717042
+
+
+iteration 1
+setting  p_lex(f|e) from -1.58246232986 to -1.66980288152
+setting  p(e|f) from -1.35455607924 to -1.34116313344
+setting  p(e) from -1.00438863947 to -0.997353560712
+final weights at iteration 1  is: {'p(e)': -0.9973535607120425, 'p_lex(f|e)': -1.669802881516575, 'p(e|f)': -1.3411631334379142}
+python rerank -l -0.997353560712 -s -1.66980288152 -t -1.34116313344 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 2
+setting  p_lex(f|e) from -1.66980288152 to -1.66980857906
+setting  p(e|f) from -1.34116313344 to -1.34100336987
+setting  p(e) from -0.997353560712 to -0.997347269812
+final weights at iteration 2  is: {'p(e)': -0.9973472698124873, 'p_lex(f|e)': -1.6698085790640689, 'p(e|f)': -1.3410033698710093}
+python rerank -l -0.997347269812 -s -1.66980857906 -t -1.34100336987 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 3
+setting  p_lex(f|e) from -1.66980857906 to -1.6698249806
+setting  p(e|f) from -1.34100336987 to -1.34094952939
+setting  p(e) from -0.997347269812 to -0.997335578485
+final weights at iteration 3  is: {'p(e)': -0.9973355784845102, 'p_lex(f|e)': -1.6698249805955656, 'p(e|f)': -1.340949529388526}
+python rerank -l -0.997335578485 -s -1.6698249806 -t -1.34094952939 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 4
+setting  p_lex(f|e) from -1.6698249806 to -1.66985546204
+setting  p(e|f) from -1.34094952939 to -1.3408494695
+setting  p(e) from -0.997335578485 to -0.997313850725
+final weights at iteration 4  is: {'p(e)': -0.9973138507254238, 'p_lex(f|e)': -1.6698554620366577, 'p(e|f)': -1.340849469495002}
+python rerank -l -0.997313850725 -s -1.66985546204 -t -1.3408494695 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -1.82165964719
+setting  p(e) from -1.0 to -0.284907128822
+setting  p_lex(f|e) from -0.5 to -1.2719267323
+final weights at iteration 0  is: {'p(e)': -0.28490712882152147, 'p_lex(f|e)': -1.2719267323044285, 'p(e|f)': -1.8216596471920572}
+python rerank -l -0.284907128822 -s -1.2719267323 -t -1.82165964719 | python compute-bleu
+bleu on dev: 0.26856302208
+
+
+iteration 1
+setting  p(e|f) from -1.82165964719 to -1.82346244374
+setting  p(e) from -0.284907128822 to -0.284478307853
+setting  p_lex(f|e) from -1.2719267323 to -1.27141560226
+final weights at iteration 1  is: {'p(e)': -0.28447830785333744, 'p_lex(f|e)': -1.2714156022608192, 'p(e|f)': -1.8234624437398101}
+python rerank -l -0.284478307853 -s -1.27141560226 -t -1.82346244374 | python compute-bleu
+bleu on dev: 0.26856302208
+
+
+iteration 2
+setting  p(e|f) from -1.82346244374 to -1.82544581146
+setting  p(e) from -0.284478307853 to -0.284201690674
+setting  p_lex(f|e) from -1.27141560226 to -1.27133922656
+final weights at iteration 2  is: {'p(e)': -0.28420169067420353, 'p_lex(f|e)': -1.2713392265611851, 'p(e|f)': -1.825445811464687}
+python rerank -l -0.284201690674 -s -1.27133922656 -t -1.82544581146 | python compute-bleu
+bleu on dev: 0.268347943887
+
+
+iteration 3
+setting  p(e|f) from -1.82544581146 to -1.82507994681
+setting  p(e) from -0.284201690674 to -0.284173119805
+setting  p_lex(f|e) from -1.27133922656 to -1.27115511219
+final weights at iteration 3  is: {'p(e)': -0.284173119805294, 'p_lex(f|e)': -1.2711551121914686, 'p(e|f)': -1.8250799468075907}
+python rerank -l -0.284173119805 -s -1.27115511219 -t -1.82507994681 | python compute-bleu
+bleu on dev: 0.268347943887
+
+
+iteration 4
+setting  p(e|f) from -1.82507994681 to -1.82482806609
+setting  p(e) from -0.284173119805 to -0.284132523744
+setting  p_lex(f|e) from -1.27115511219 to -1.27097624999
+final weights at iteration 4  is: {'p(e)': -0.2841325237436222, 'p_lex(f|e)': -1.2709762499853863, 'p(e|f)': -1.824828066087266}
+python rerank -l -0.284132523744 -s -1.27097624999 -t -1.82482806609 | python compute-bleu
+bleu on dev: 0.268347943887
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -0.5, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -0.5 to -0.755479285615
+setting  p_lex(f|e) from -1.0 to -1.2705586348
+setting  p(e|f) from -1.0 to -1.00299464669
+final weights at iteration 0  is: {'p(e)': -0.755479285614814, 'p_lex(f|e)': -1.2705586347958124, 'p(e|f)': -1.0029946466855693}
+python rerank -l -0.755479285615 -s -1.2705586348 -t -1.00299464669 | python compute-bleu
+bleu on dev: 0.274914883767
+
+
+iteration 1
+setting  p(e) from -0.755479285615 to -0.755574885005
+setting  p_lex(f|e) from -1.2705586348 to -1.24351688529
+setting  p(e|f) from -1.00299464669 to -1.003938734
+final weights at iteration 1  is: {'p(e)': -0.7555748850049678, 'p_lex(f|e)': -1.2435168852889666, 'p(e|f)': -1.0039387340027686}
+python rerank -l -0.755574885005 -s -1.24351688529 -t -1.003938734 | python compute-bleu
+bleu on dev: 0.274533530324
+
+
+iteration 2
+setting  p(e) from -0.755574885005 to -0.75401661688
+setting  p_lex(f|e) from -1.24351688529 to -1.24917748443
+setting  p(e|f) from -1.003938734 to -1.00511278777
+final weights at iteration 2  is: {'p(e)': -0.7540166168804432, 'p_lex(f|e)': -1.2491774844275785, 'p(e|f)': -1.0051127877701116}
+python rerank -l -0.75401661688 -s -1.24917748443 -t -1.00511278777 | python compute-bleu
+bleu on dev: 0.274444708979
+
+
+iteration 3
+setting  p(e) from -0.75401661688 to -0.746573136086
+setting  p_lex(f|e) from -1.24917748443 to -1.24918379584
+setting  p(e|f) from -1.00511278777 to -1.00505496295
+final weights at iteration 3  is: {'p(e)': -0.7465731360855816, 'p_lex(f|e)': -1.2491837958420886, 'p(e|f)': -1.005054962951937}
+python rerank -l -0.746573136086 -s -1.24918379584 -t -1.00505496295 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+iteration 4
+setting  p(e) from -0.746573136086 to -0.746564558054
+setting  p_lex(f|e) from -1.24918379584 to -1.24919087849
+setting  p(e|f) from -1.00505496295 to -1.00499007218
+final weights at iteration 4  is: {'p(e)': -0.746564558054273, 'p_lex(f|e)': -1.2491908784855654, 'p(e|f)': -1.0049900721781466}
+python rerank -l -0.746564558054 -s -1.24919087849 -t -1.00499007218 | python compute-bleu
+bleu on dev: 0.274914560779
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -0.960663072564
+setting  p(e|f) from -1.0 to -0.650391109203
+setting  p(e) from -0.5 to -0.516631564781
+final weights at iteration 0  is: {'p(e)': -0.5166315647806228, 'p_lex(f|e)': -0.9606630725639951, 'p(e|f)': -0.6503911092025854}
+python rerank -l -0.516631564781 -s -0.960663072564 -t -0.650391109203 | python compute-bleu
+bleu on dev: 0.273368882416
+
+
+iteration 1
+setting  p_lex(f|e) from -0.960663072564 to -0.886036686373
+setting  p(e|f) from -0.650391109203 to -0.655682916442
+setting  p(e) from -0.516631564781 to -0.515280414217
+final weights at iteration 1  is: {'p(e)': -0.5152804142173185, 'p_lex(f|e)': -0.8860366863733964, 'p(e|f)': -0.6556829164418494}
+python rerank -l -0.515280414217 -s -0.886036686373 -t -0.655682916442 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+iteration 2
+setting  p_lex(f|e) from -0.886036686373 to -0.886043162243
+setting  p(e|f) from -0.655682916442 to -0.655644890694
+setting  p(e) from -0.515280414217 to -0.515274170811
+final weights at iteration 2  is: {'p(e)': -0.5152741708113712, 'p_lex(f|e)': -0.886043162243223, 'p(e|f)': -0.6556448906937202}
+python rerank -l -0.515274170811 -s -0.886043162243 -t -0.655644890694 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+iteration 3
+setting  p_lex(f|e) from -0.886043162243 to -0.886049690683
+setting  p(e|f) from -0.655644890694 to -0.655606556262
+setting  p(e) from -0.515274170811 to -0.515267876723
+final weights at iteration 3  is: {'p(e)': -0.5152678767229772, 'p_lex(f|e)': -0.8860496906825865, 'p(e|f)': -0.6556065562618496}
+python rerank -l -0.515267876723 -s -0.886049690683 -t -0.655606556262 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+iteration 4
+setting  p_lex(f|e) from -0.886049690683 to -0.886056272118
+setting  p(e|f) from -0.655606556262 to -0.65556791064
+setting  p(e) from -0.515267876723 to -0.515261531541
+final weights at iteration 4  is: {'p(e)': -0.5152615315407088, 'p_lex(f|e)': -0.8860562721182239, 'p(e|f)': -0.6555679106404131}
+python rerank -l -0.515261531541 -s -0.886056272118 -t -0.65556791064 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -0.910653287491
+setting  p(e) from -0.5 to -0.663587774474
+setting  p_lex(f|e) from -1.0 to -1.14179347805
+final weights at iteration 0  is: {'p(e)': -0.6635877744739014, 'p_lex(f|e)': -1.1417934780547956, 'p(e|f)': -0.9106532874910406}
+python rerank -l -0.663587774474 -s -1.14179347805 -t -0.910653287491 | python compute-bleu
+bleu on dev: 0.274371145
+
+
+iteration 1
+setting  p(e|f) from -0.910653287491 to -0.843065894408
+setting  p(e) from -0.663587774474 to -0.663577586407
+setting  p_lex(f|e) from -1.14179347805 to -1.14180413124
+final weights at iteration 1  is: {'p(e)': -0.6635775864067393, 'p_lex(f|e)': -1.1418041312430158, 'p(e|f)': -0.8430658944083829}
+python rerank -l -0.663577586407 -s -1.14180413124 -t -0.843065894408 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+iteration 2
+setting  p(e|f) from -0.843065894408 to -0.843003339808
+setting  p(e) from -0.663577586407 to -0.663567315635
+setting  p_lex(f|e) from -1.14180413124 to -1.14181487091
+final weights at iteration 2  is: {'p(e)': -0.6635673156353314, 'p_lex(f|e)': -1.1418148709112166, 'p(e|f)': -0.8430033398075933}
+python rerank -l -0.663567315635 -s -1.14181487091 -t -0.843003339808 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+iteration 3
+setting  p(e|f) from -0.843003339808 to -0.842940277404
+setting  p(e) from -0.663567315635 to -0.663556961488
+setting  p_lex(f|e) from -1.14181487091 to -1.14182569776
+final weights at iteration 3  is: {'p(e)': -0.6635569614883084, 'p_lex(f|e)': -1.1418256977614265, 'p(e|f)': -0.8429402774038217}
+python rerank -l -0.663556961488 -s -1.14182569776 -t -0.842940277404 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+iteration 4
+setting  p(e|f) from -0.842940277404 to -0.842876703075
+setting  p(e) from -0.663556961488 to -0.663546523289
+setting  p_lex(f|e) from -1.14182569776 to -1.1418366125
+final weights at iteration 4  is: {'p(e)': -0.66354652328884, 'p_lex(f|e)': -1.1418366125013608, 'p(e|f)': -0.8428767030748181}
+python rerank -l -0.663546523289 -s -1.1418366125 -t -0.842876703075 | python compute-bleu
+bleu on dev: 0.274304298094
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -0.5}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.273898961352
+setting  p_lex(f|e) from -0.5 to -0.501373351482
+setting  p(e|f) from -0.5 to -1.34753548662
+final weights at iteration 0  is: {'p(e)': -0.2738989613523296, 'p_lex(f|e)': -0.501373351482072, 'p(e|f)': -1.3475354866187352}
+python rerank -l -0.273898961352 -s -0.501373351482 -t -1.34753548662 | python compute-bleu
+bleu on dev: 0.273512391378
+
+
+iteration 1
+setting  p(e) from -0.273898961352 to -0.274052163516
+setting  p_lex(f|e) from -0.501373351482 to -0.560420589907
+setting  p(e|f) from -1.34753548662 to -1.34791151755
+final weights at iteration 1  is: {'p(e)': -0.2740521635156568, 'p_lex(f|e)': -0.5604205899073881, 'p(e|f)': -1.3479115175525607}
+python rerank -l -0.274052163516 -s -0.560420589907 -t -1.34791151755 | python compute-bleu
+bleu on dev: 0.271720299665
+
+
+iteration 2
+setting  p(e) from -0.274052163516 to -0.18324272137
+setting  p_lex(f|e) from -0.560420589907 to -0.560463521086
+setting  p(e|f) from -1.34791151755 to -1.34754710079
+final weights at iteration 2  is: {'p(e)': -0.18324272136970202, 'p_lex(f|e)': -0.560463521086014, 'p(e|f)': -1.347547100794463}
+python rerank -l -0.18324272137 -s -0.560463521086 -t -1.34754710079 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+iteration 3
+setting  p(e) from -0.18324272137 to -0.183228481001
+setting  p_lex(f|e) from -0.560463521086 to -0.560535917978
+setting  p(e|f) from -1.34754710079 to -1.34693256745
+final weights at iteration 3  is: {'p(e)': -0.18322848100113515, 'p_lex(f|e)': -0.5605359179783924, 'p(e|f)': -1.3469325674491566}
+python rerank -l -0.183228481001 -s -0.560535917978 -t -1.34693256745 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+iteration 4
+setting  p(e) from -0.183228481001 to -0.183204466789
+setting  p_lex(f|e) from -0.560535917978 to -0.560658004308
+setting  p(e|f) from -1.34693256745 to -1.34589625058
+final weights at iteration 4  is: {'p(e)': -0.18320446678900454, 'p_lex(f|e)': -0.5606580043080593, 'p(e|f)': -1.3458962505837002}
+python rerank -l -0.183204466789 -s -0.560658004308 -t -1.34589625058 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.24816887196
+setting  p(e|f) from -0.5 to -2.70316195791
+setting  p(e) from -1.0 to -0.387210873512
+final weights at iteration 0  is: {'p(e)': -0.3872108735115358, 'p_lex(f|e)': -1.248168871963141, 'p(e|f)': -2.7031619579103574}
+python rerank -l -0.387210873512 -s -1.24816887196 -t -2.70316195791 | python compute-bleu
+bleu on dev: 0.269686628327
+
+
+iteration 1
+setting  p_lex(f|e) from -1.24816887196 to -1.13416888243
+setting  p(e|f) from -2.70316195791 to -2.69985076073
+setting  p(e) from -0.387210873512 to -0.388927110707
+final weights at iteration 1  is: {'p(e)': -0.3889271107069885, 'p_lex(f|e)': -1.1341688824311005, 'p(e|f)': -2.6998507607300435}
+python rerank -l -0.388927110707 -s -1.13416888243 -t -2.69985076073 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 2
+setting  p_lex(f|e) from -1.13416888243 to -1.13419676467
+setting  p(e|f) from -2.69985076073 to -2.69538837171
+setting  p(e) from -0.388927110707 to -0.389274815781
+final weights at iteration 2  is: {'p(e)': -0.38927481578119394, 'p_lex(f|e)': -1.1341967646739521, 'p(e|f)': -2.6953883717137757}
+python rerank -l -0.389274815781 -s -1.13419676467 -t -2.69538837171 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 3
+setting  p_lex(f|e) from -1.13419676467 to -1.13296295524
+setting  p(e|f) from -2.69538837171 to -2.69041097094
+setting  p(e) from -0.389274815781 to -0.389004065215
+final weights at iteration 3  is: {'p(e)': -0.3890040652150569, 'p_lex(f|e)': -1.1329629552438583, 'p(e|f)': -2.690410970939143}
+python rerank -l -0.389004065215 -s -1.13296295524 -t -2.69041097094 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 4
+setting  p_lex(f|e) from -1.13296295524 to -1.13116068076
+setting  p(e|f) from -2.69041097094 to -2.68520644395
+setting  p(e) from -0.389004065215 to -0.388454297539
+final weights at iteration 4  is: {'p(e)': -0.3884542975385066, 'p_lex(f|e)': -1.1311606807610743, 'p(e|f)': -2.685206443945027}
+python rerank -l -0.388454297539 -s -1.13116068076 -t -2.68520644395 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -0.5 to -1.64047543721
+setting  p(e) from -1.0 to -0.265322406543
+setting  p_lex(f|e) from -0.5 to -0.782064546727
+final weights at iteration 0  is: {'p(e)': -0.2653224065426948, 'p_lex(f|e)': -0.7820645467269164, 'p(e|f)': -1.640475437213396}
+python rerank -l -0.265322406543 -s -0.782064546727 -t -1.64047543721 | python compute-bleu
+bleu on dev: 0.269450121128
+
+
+iteration 1
+setting  p(e|f) from -1.64047543721 to -1.86613163114
+setting  p(e) from -0.265322406543 to -0.267851624412
+setting  p_lex(f|e) from -0.782064546727 to -0.783324459351
+final weights at iteration 1  is: {'p(e)': -0.26785162441186994, 'p_lex(f|e)': -0.7833244593508364, 'p(e|f)': -1.8661316311412175}
+python rerank -l -0.267851624412 -s -0.783324459351 -t -1.86613163114 | python compute-bleu
+bleu on dev: 0.270059062816
+
+
+iteration 2
+setting  p(e|f) from -1.86613163114 to -1.86356092657
+setting  p(e) from -0.267851624412 to -0.268699551341
+setting  p_lex(f|e) from -0.783324459351 to -0.783032658666
+final weights at iteration 2  is: {'p(e)': -0.2686995513414478, 'p_lex(f|e)': -0.7830326586660518, 'p(e|f)': -1.8635609265741593}
+python rerank -l -0.268699551341 -s -0.783032658666 -t -1.86356092657 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 3
+setting  p(e|f) from -1.86356092657 to -1.86035199139
+setting  p(e) from -0.268699551341 to -0.268787220886
+setting  p_lex(f|e) from -0.783032658666 to -0.782040374541
+final weights at iteration 3  is: {'p(e)': -0.2687872208857991, 'p_lex(f|e)': -0.7820403745410216, 'p(e|f)': -1.8603519913910378}
+python rerank -l -0.268787220886 -s -0.782040374541 -t -1.86035199139 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 4
+setting  p(e|f) from -1.86035199139 to -1.85685833693
+setting  p(e) from -0.268787220886 to -0.26853143717
+setting  p_lex(f|e) from -0.782040374541 to -0.780732819802
+final weights at iteration 4  is: {'p(e)': -0.2685314371696421, 'p_lex(f|e)': -0.7807328198023094, 'p(e|f)': -1.856858336933344}
+python rerank -l -0.26853143717 -s -0.780732819802 -t -1.85685833693 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.547797922705
+setting  p_lex(f|e) from -1.0 to -1.00274670296
+setting  p(e|f) from -1.0 to -2.69507097324
+final weights at iteration 0  is: {'p(e)': -0.5477979227046592, 'p_lex(f|e)': -1.002746702964144, 'p(e|f)': -2.6950709732374705}
+python rerank -l -0.547797922705 -s -1.00274670296 -t -2.69507097324 | python compute-bleu
+bleu on dev: 0.273512391378
+
+
+iteration 1
+setting  p(e) from -0.547797922705 to -0.548104327031
+setting  p_lex(f|e) from -1.00274670296 to -1.12084117981
+setting  p(e|f) from -2.69507097324 to -2.69582303511
+final weights at iteration 1  is: {'p(e)': -0.5481043270313136, 'p_lex(f|e)': -1.1208411798147762, 'p(e|f)': -2.6958230351051213}
+python rerank -l -0.548104327031 -s -1.12084117981 -t -2.69582303511 | python compute-bleu
+bleu on dev: 0.271720299665
+
+
+iteration 2
+setting  p(e) from -0.548104327031 to -0.366485442739
+setting  p_lex(f|e) from -1.12084117981 to -1.12092704217
+setting  p(e|f) from -2.69582303511 to -2.69509420159
+final weights at iteration 2  is: {'p(e)': -0.36648544273940403, 'p_lex(f|e)': -1.120927042172028, 'p(e|f)': -2.695094201588926}
+python rerank -l -0.366485442739 -s -1.12092704217 -t -2.69509420159 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+iteration 3
+setting  p(e) from -0.366485442739 to -0.366456962002
+setting  p_lex(f|e) from -1.12092704217 to -1.12107183596
+setting  p(e|f) from -2.69509420159 to -2.6938651349
+final weights at iteration 3  is: {'p(e)': -0.3664569620022703, 'p_lex(f|e)': -1.1210718359567848, 'p(e|f)': -2.693865134898313}
+python rerank -l -0.366456962002 -s -1.12107183596 -t -2.6938651349 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+iteration 4
+setting  p(e) from -0.366456962002 to -0.366408933578
+setting  p_lex(f|e) from -1.12107183596 to -1.12131600862
+setting  p(e|f) from -2.6938651349 to -2.69179250117
+final weights at iteration 4  is: {'p(e)': -0.3664089335780091, 'p_lex(f|e)': -1.1213160086161187, 'p(e|f)': -2.6917925011674004}
+python rerank -l -0.366408933578 -s -1.12131600862 -t -2.69179250117 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -1.28591576702
+setting  p(e|f) from -1.0 to -2.751525211
+setting  p(e) from -1.0 to -0.496969206387
+final weights at iteration 0  is: {'p(e)': -0.4969692063872897, 'p_lex(f|e)': -1.28591576702248, 'p(e|f)': -2.7515252110003168}
+python rerank -l -0.496969206387 -s -1.28591576702 -t -2.751525211 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 1
+setting  p_lex(f|e) from -1.28591576702 to -1.28593776518
+setting  p(e|f) from -2.751525211 to -2.75079609434
+setting  p(e) from -0.496969206387 to -0.497033227793
+final weights at iteration 1  is: {'p(e)': -0.49703322779319264, 'p_lex(f|e)': -1.285937765179617, 'p(e|f)': -2.7507960943395604}
+python rerank -l -0.497033227793 -s -1.28593776518 -t -2.75079609434 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 2
+setting  p_lex(f|e) from -1.28593776518 to -1.28597263988
+setting  p(e|f) from -2.75079609434 to -2.74964019179
+setting  p(e) from -0.497033227793 to -0.497134723905
+final weights at iteration 2  is: {'p(e)': -0.4971347239052877, 'p_lex(f|e)': -1.2859726398811493, 'p(e|f)': -2.7496401917896596}
+python rerank -l -0.497134723905 -s -1.28597263988 -t -2.74964019179 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 3
+setting  p_lex(f|e) from -1.28597263988 to -1.28602792837
+setting  p(e|f) from -2.74964019179 to -2.74780768572
+setting  p(e) from -0.497134723905 to -0.497295630412
+final weights at iteration 3  is: {'p(e)': -0.4972956304118608, 'p_lex(f|e)': -1.2860279283673355, 'p(e|f)': -2.747807685722176}
+python rerank -l -0.497295630412 -s -1.28602792837 -t -2.74780768572 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 4
+setting  p_lex(f|e) from -1.28602792837 to -1.28611557978
+setting  p(e|f) from -2.74780768572 to -2.74696059745
+setting  p(e) from -0.497295630412 to -0.497403511705
+final weights at iteration 4  is: {'p(e)': -0.49740351170509967, 'p_lex(f|e)': -1.2861155797756751, 'p(e|f)': -2.7469605974469347}
+python rerank -l -0.497403511705 -s -1.28611557978 -t -2.74696059745 | python compute-bleu
+bleu on dev: 0.270109034373
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.29508210188
+setting  p(e) from -1.0 to -0.337645137087
+setting  p_lex(f|e) from -1.0 to -0.991565513417
+final weights at iteration 0  is: {'p(e)': -0.33764513708721877, 'p_lex(f|e)': -0.9915655134166089, 'p(e|f)': -2.2950821018820347}
+python rerank -l -0.337645137087 -s -0.991565513417 -t -2.29508210188 | python compute-bleu
+bleu on dev: 0.269836732915
+
+
+iteration 1
+setting  p(e|f) from -2.29508210188 to -2.36272396113
+setting  p(e) from -0.337645137087 to -0.339851427573
+setting  p_lex(f|e) from -0.991565513417 to -0.992240607864
+final weights at iteration 1  is: {'p(e)': -0.3398514275725253, 'p_lex(f|e)': -0.9922406078640704, 'p(e|f)': -2.362723961130743}
+python rerank -l -0.339851427573 -s -0.992240607864 -t -2.36272396113 | python compute-bleu
+bleu on dev: 0.270049380585
+
+
+iteration 2
+setting  p(e|f) from -2.36272396113 to -2.35908820605
+setting  p(e) from -0.339851427573 to -0.340474387324
+setting  p_lex(f|e) from -0.992240607864 to -0.991455100246
+final weights at iteration 2  is: {'p(e)': -0.3404743873243923, 'p_lex(f|e)': -0.9914551002455976, 'p(e|f)': -2.3590882060451417}
+python rerank -l -0.340474387324 -s -0.991455100246 -t -2.35908820605 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 3
+setting  p(e|f) from -2.35908820605 to -2.35485371007
+setting  p(e) from -0.340474387324 to -0.340381578924
+setting  p_lex(f|e) from -0.991455100246 to -0.990010800531
+final weights at iteration 3  is: {'p(e)': -0.3403815789235406, 'p_lex(f|e)': -0.9900108005311291, 'p(e|f)': -2.3548537100671676}
+python rerank -l -0.340381578924 -s -0.990010800531 -t -2.35485371007 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 4
+setting  p(e|f) from -2.35485371007 to -2.35035345667
+setting  p(e) from -0.340381578924 to -0.339965608376
+setting  p_lex(f|e) from -0.990010800531 to -0.988270556101
+final weights at iteration 4  is: {'p(e)': -0.3399656083764653, 'p_lex(f|e)': -0.988270556100737, 'p(e|f)': -2.350353456674642}
+python rerank -l -0.339965608376 -s -0.988270556101 -t -2.35035345667 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.168370655048
+setting  p_lex(f|e) from -0.5 to -0.487236222449
+setting  p(e|f) from -1.0 to -1.15672945382
+final weights at iteration 0  is: {'p(e)': -0.16837065504838178, 'p_lex(f|e)': -0.487236222449106, 'p(e|f)': -1.1567294538200408}
+python rerank -l -0.168370655048 -s -0.487236222449 -t -1.15672945382 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 1
+setting  p(e) from -0.168370655048 to -0.167315103362
+setting  p_lex(f|e) from -0.487236222449 to -0.486379000761
+setting  p(e|f) from -1.15672945382 to -1.15445769806
+final weights at iteration 1  is: {'p(e)': -0.16731510336236033, 'p_lex(f|e)': -0.4863790007611517, 'p(e|f)': -1.1544576980630268}
+python rerank -l -0.167315103362 -s -0.486379000761 -t -1.15445769806 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 2
+setting  p(e) from -0.167315103362 to -0.167038406859
+setting  p_lex(f|e) from -0.486379000761 to -0.485457355524
+setting  p(e|f) from -1.15445769806 to -1.15216303212
+final weights at iteration 2  is: {'p(e)': -0.16703840685877247, 'p_lex(f|e)': -0.4854573555243302, 'p(e|f)': -1.152163032119993}
+python rerank -l -0.167038406859 -s -0.485457355524 -t -1.15216303212 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 3
+setting  p(e) from -0.167038406859 to -0.16672987835
+setting  p_lex(f|e) from -0.485457355524 to -0.484507627344
+setting  p(e|f) from -1.15216303212 to -1.14986054087
+final weights at iteration 3  is: {'p(e)': -0.16672987834972525, 'p_lex(f|e)': -0.4845076273441208, 'p(e|f)': -1.1498605408685754}
+python rerank -l -0.16672987835 -s -0.484507627344 -t -1.14986054087 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 4
+setting  p(e) from -0.16672987835 to -0.166407312525
+setting  p_lex(f|e) from -0.484507627344 to -0.483546259679
+setting  p(e|f) from -1.14986054087 to -1.14755704573
+final weights at iteration 4  is: {'p(e)': -0.16640731252453717, 'p_lex(f|e)': -0.4835462596789704, 'p(e|f)': -1.1475570457287314}
+python rerank -l -0.166407312525 -s -0.483546259679 -t -1.14755704573 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.28591576702
+setting  p(e|f) from -1.0 to -2.751525211
+setting  p(e) from -1.0 to -0.496969206387
+final weights at iteration 0  is: {'p(e)': -0.4969692063872897, 'p_lex(f|e)': -1.28591576702248, 'p(e|f)': -2.7515252110003168}
+python rerank -l -0.496969206387 -s -1.28591576702 -t -2.751525211 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 1
+setting  p_lex(f|e) from -1.28591576702 to -1.28593776518
+setting  p(e|f) from -2.751525211 to -2.75079609434
+setting  p(e) from -0.496969206387 to -0.497033227793
+final weights at iteration 1  is: {'p(e)': -0.49703322779319264, 'p_lex(f|e)': -1.285937765179617, 'p(e|f)': -2.7507960943395604}
+python rerank -l -0.497033227793 -s -1.28593776518 -t -2.75079609434 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 2
+setting  p_lex(f|e) from -1.28593776518 to -1.28597263988
+setting  p(e|f) from -2.75079609434 to -2.74964019179
+setting  p(e) from -0.497033227793 to -0.497134723905
+final weights at iteration 2  is: {'p(e)': -0.4971347239052877, 'p_lex(f|e)': -1.2859726398811493, 'p(e|f)': -2.7496401917896596}
+python rerank -l -0.497134723905 -s -1.28597263988 -t -2.74964019179 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 3
+setting  p_lex(f|e) from -1.28597263988 to -1.28602792837
+setting  p(e|f) from -2.74964019179 to -2.74780768572
+setting  p(e) from -0.497134723905 to -0.497295630412
+final weights at iteration 3  is: {'p(e)': -0.4972956304118608, 'p_lex(f|e)': -1.2860279283673355, 'p(e|f)': -2.747807685722176}
+python rerank -l -0.497295630412 -s -1.28602792837 -t -2.74780768572 | python compute-bleu
+bleu on dev: 0.269926835119
+
+
+iteration 4
+setting  p_lex(f|e) from -1.28602792837 to -1.28611557978
+setting  p(e|f) from -2.74780768572 to -2.74696059745
+setting  p(e) from -0.497295630412 to -0.497403511705
+final weights at iteration 4  is: {'p(e)': -0.49740351170509967, 'p_lex(f|e)': -1.2861155797756751, 'p(e|f)': -2.7469605974469347}
+python rerank -l -0.497403511705 -s -1.28611557978 -t -2.74696059745 | python compute-bleu
+bleu on dev: 0.270109034373
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -1.64047543721
+setting  p(e) from -1.0 to -0.265322406543
+setting  p_lex(f|e) from -0.5 to -0.782064546727
+final weights at iteration 0  is: {'p(e)': -0.2653224065426948, 'p_lex(f|e)': -0.7820645467269164, 'p(e|f)': -1.640475437213396}
+python rerank -l -0.265322406543 -s -0.782064546727 -t -1.64047543721 | python compute-bleu
+bleu on dev: 0.269450121128
+
+
+iteration 1
+setting  p(e|f) from -1.64047543721 to -1.86613163114
+setting  p(e) from -0.265322406543 to -0.267851624412
+setting  p_lex(f|e) from -0.782064546727 to -0.783324459351
+final weights at iteration 1  is: {'p(e)': -0.26785162441186994, 'p_lex(f|e)': -0.7833244593508364, 'p(e|f)': -1.8661316311412175}
+python rerank -l -0.267851624412 -s -0.783324459351 -t -1.86613163114 | python compute-bleu
+bleu on dev: 0.270059062816
+
+
+iteration 2
+setting  p(e|f) from -1.86613163114 to -1.86356092657
+setting  p(e) from -0.267851624412 to -0.268699551341
+setting  p_lex(f|e) from -0.783324459351 to -0.783032658666
+final weights at iteration 2  is: {'p(e)': -0.2686995513414478, 'p_lex(f|e)': -0.7830326586660518, 'p(e|f)': -1.8635609265741593}
+python rerank -l -0.268699551341 -s -0.783032658666 -t -1.86356092657 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 3
+setting  p(e|f) from -1.86356092657 to -1.86035199139
+setting  p(e) from -0.268699551341 to -0.268787220886
+setting  p_lex(f|e) from -0.783032658666 to -0.782040374541
+final weights at iteration 3  is: {'p(e)': -0.2687872208857991, 'p_lex(f|e)': -0.7820403745410216, 'p(e|f)': -1.8603519913910378}
+python rerank -l -0.268787220886 -s -0.782040374541 -t -1.86035199139 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 4
+setting  p(e|f) from -1.86035199139 to -1.85685833693
+setting  p(e) from -0.268787220886 to -0.26853143717
+setting  p_lex(f|e) from -0.782040374541 to -0.780732819802
+final weights at iteration 4  is: {'p(e)': -0.2685314371696421, 'p_lex(f|e)': -0.7807328198023094, 'p(e|f)': -1.856858336933344}
+python rerank -l -0.26853143717 -s -0.780732819802 -t -1.85685833693 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -0.5, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -0.5 to -0.547797922705
+setting  p_lex(f|e) from -1.0 to -1.00274670296
+setting  p(e|f) from -1.0 to -2.69507097324
+final weights at iteration 0  is: {'p(e)': -0.5477979227046592, 'p_lex(f|e)': -1.002746702964144, 'p(e|f)': -2.6950709732374705}
+python rerank -l -0.547797922705 -s -1.00274670296 -t -2.69507097324 | python compute-bleu
+bleu on dev: 0.273512391378
+
+
+iteration 1
+setting  p(e) from -0.547797922705 to -0.548104327031
+setting  p_lex(f|e) from -1.00274670296 to -1.12084117981
+setting  p(e|f) from -2.69507097324 to -2.69582303511
+final weights at iteration 1  is: {'p(e)': -0.5481043270313136, 'p_lex(f|e)': -1.1208411798147762, 'p(e|f)': -2.6958230351051213}
+python rerank -l -0.548104327031 -s -1.12084117981 -t -2.69582303511 | python compute-bleu
+bleu on dev: 0.271720299665
+
+
+iteration 2
+setting  p(e) from -0.548104327031 to -0.366485442739
+setting  p_lex(f|e) from -1.12084117981 to -1.12092704217
+setting  p(e|f) from -2.69582303511 to -2.69509420159
+final weights at iteration 2  is: {'p(e)': -0.36648544273940403, 'p_lex(f|e)': -1.120927042172028, 'p(e|f)': -2.695094201588926}
+python rerank -l -0.366485442739 -s -1.12092704217 -t -2.69509420159 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+iteration 3
+setting  p(e) from -0.366485442739 to -0.366456962002
+setting  p_lex(f|e) from -1.12092704217 to -1.12107183596
+setting  p(e|f) from -2.69509420159 to -2.6938651349
+final weights at iteration 3  is: {'p(e)': -0.3664569620022703, 'p_lex(f|e)': -1.1210718359567848, 'p(e|f)': -2.693865134898313}
+python rerank -l -0.366456962002 -s -1.12107183596 -t -2.6938651349 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+iteration 4
+setting  p(e) from -0.366456962002 to -0.366408933578
+setting  p_lex(f|e) from -1.12107183596 to -1.12131600862
+setting  p(e|f) from -2.6938651349 to -2.69179250117
+final weights at iteration 4  is: {'p(e)': -0.3664089335780091, 'p_lex(f|e)': -1.1213160086161187, 'p(e|f)': -2.6917925011674004}
+python rerank -l -0.366408933578 -s -1.12131600862 -t -2.69179250117 | python compute-bleu
+bleu on dev: 0.269264839585
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -0.888139778039
+setting  p(e|f) from -1.0 to -1.86319742024
+setting  p(e) from -0.5 to -0.303628807343
+final weights at iteration 0  is: {'p(e)': -0.30362880734273734, 'p_lex(f|e)': -0.8881397780391646, 'p(e|f)': -1.8631974202424497}
+python rerank -l -0.303628807343 -s -0.888139778039 -t -1.86319742024 | python compute-bleu
+bleu on dev: 0.269450121128
+
+
+iteration 1
+setting  p_lex(f|e) from -0.888139778039 to -0.888275387336
+setting  p(e|f) from -1.86319742024 to -2.11353525366
+setting  p(e) from -0.303628807343 to -0.304678514595
+final weights at iteration 1  is: {'p(e)': -0.30467851459508244, 'p_lex(f|e)': -0.8882753873362357, 'p(e|f)': -2.1135352536561336}
+python rerank -l -0.304678514595 -s -0.888275387336 -t -2.11353525366 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 2
+setting  p_lex(f|e) from -0.888275387336 to -0.888025778503
+setting  p(e|f) from -2.11353525366 to -2.10992955463
+setting  p(e) from -0.304678514595 to -0.304817776351
+final weights at iteration 2  is: {'p(e)': -0.3048177763505323, 'p_lex(f|e)': -0.8880257785029193, 'p(e|f)': -2.1099295546296917}
+python rerank -l -0.304817776351 -s -0.888025778503 -t -2.10992955463 | python compute-bleu
+bleu on dev: 0.269694990244
+
+
+iteration 3
+setting  p_lex(f|e) from -0.888025778503 to -0.886937169581
+setting  p(e|f) from -2.10992955463 to -2.10598244066
+setting  p(e) from -0.304817776351 to -0.304545698322
+final weights at iteration 3  is: {'p(e)': -0.3045456983220121, 'p_lex(f|e)': -0.8869371695814376, 'p(e|f)': -2.1059824406641594}
+python rerank -l -0.304545698322 -s -0.886937169581 -t -2.10598244066 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 4
+setting  p_lex(f|e) from -0.886937169581 to -0.885470837285
+setting  p(e|f) from -2.10598244066 to -2.10188547023
+setting  p(e) from -0.304545698322 to -0.304088144887
+final weights at iteration 4  is: {'p(e)': -0.3040881448868769, 'p_lex(f|e)': -0.8854708372850871, 'p(e|f)': -2.1018854702264997}
+python rerank -l -0.304088144887 -s -0.885470837285 -t -2.10188547023 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.36059665936
+setting  p(e) from -0.5 to -0.344401744273
+setting  p_lex(f|e) from -1.0 to -0.998150251387
+final weights at iteration 0  is: {'p(e)': -0.3444017442728469, 'p_lex(f|e)': -0.9981502513868554, 'p(e|f)': -2.360596659361546}
+python rerank -l -0.344401744273 -s -0.998150251387 -t -2.36059665936 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 1
+setting  p(e|f) from -2.36059665936 to -2.36643532209
+setting  p(e) from -0.344401744273 to -0.343002709922
+setting  p_lex(f|e) from -0.998150251387 to -0.99549256307
+final weights at iteration 1  is: {'p(e)': -0.3430027099218193, 'p_lex(f|e)': -0.9954925630699416, 'p(e|f)': -2.3664353220885737}
+python rerank -l -0.343002709922 -s -0.99549256307 -t -2.36643532209 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 2
+setting  p(e|f) from -2.36643532209 to -2.36141347036
+setting  p(e) from -0.343002709922 to -0.34199392489
+setting  p_lex(f|e) from -0.99549256307 to -0.993198288884
+final weights at iteration 2  is: {'p(e)': -0.3419939248899495, 'p_lex(f|e)': -0.9931982888835091, 'p(e|f)': -2.3614134703578475}
+python rerank -l -0.34199392489 -s -0.993198288884 -t -2.36141347036 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 3
+setting  p(e|f) from -2.36141347036 to -2.35655041283
+setting  p(e) from -0.34199392489 to -0.341162497704
+setting  p_lex(f|e) from -0.993198288884 to -0.991070665562
+final weights at iteration 3  is: {'p(e)': -0.34116249770388873, 'p_lex(f|e)': -0.9910706655620223, 'p(e|f)': -2.3565504128326813}
+python rerank -l -0.341162497704 -s -0.991070665562 -t -2.35655041283 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+iteration 4
+setting  p(e|f) from -2.35655041283 to -2.35176441608
+setting  p(e) from -0.341162497704 to -0.340412084759
+setting  p_lex(f|e) from -0.991070665562 to -0.989020645289
+final weights at iteration 4  is: {'p(e)': -0.3404120847587626, 'p_lex(f|e)': -0.9890206452890943, 'p(e|f)': -2.3517644160821685}
+python rerank -l -0.340412084759 -s -0.989020645289 -t -2.35176441608 | python compute-bleu
+bleu on dev: 0.269745559733
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -0.5}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.377739642807
+setting  p_lex(f|e) from -0.5 to -0.500261629633
+setting  p(e|f) from -0.5 to -0.492343715858
+final weights at iteration 0  is: {'p(e)': -0.377739642807407, 'p_lex(f|e)': -0.500261629632593, 'p(e|f)': -0.49234371585831205}
+python rerank -l -0.377739642807 -s -0.500261629633 -t -0.492343715858 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 1
+setting  p(e) from -0.377739642807 to -0.377554267207
+setting  p_lex(f|e) from -0.500261629633 to -0.499993605594
+setting  p(e|f) from -0.492343715858 to -0.492074090123
+final weights at iteration 1  is: {'p(e)': -0.3775542672073319, 'p_lex(f|e)': -0.4999936055939239, 'p(e|f)': -0.49207409012332504}
+python rerank -l -0.377554267207 -s -0.499993605594 -t -0.492074090123 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 2
+setting  p(e) from -0.377554267207 to -0.377354910718
+setting  p_lex(f|e) from -0.499993605594 to -0.499721341552
+setting  p(e|f) from -0.492074090123 to -0.491803995843
+final weights at iteration 2  is: {'p(e)': -0.37735491071793414, 'p_lex(f|e)': -0.49972134155162073, 'p(e|f)': -0.49180399584341605}
+python rerank -l -0.377354910718 -s -0.499721341552 -t -0.491803995843 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 3
+setting  p(e) from -0.377354910718 to -0.37715050018
+setting  p_lex(f|e) from -0.499721341552 to -0.499447618489
+setting  p(e|f) from -0.491803995843 to -0.491533823878
+final weights at iteration 3  is: {'p(e)': -0.37715050017959695, 'p_lex(f|e)': -0.49944761848852687, 'p(e|f)': -0.4915338238779995}
+python rerank -l -0.37715050018 -s -0.499447618489 -t -0.491533823878 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p(e) from -0.37715050018 to -0.376944308686
+setting  p_lex(f|e) from -0.499447618489 to -0.499173456033
+setting  p(e|f) from -0.491533823878 to -0.491263717489
+final weights at iteration 4  is: {'p(e)': -0.3769443086857681, 'p_lex(f|e)': -0.49917345603281815, 'p(e|f)': -0.49126371748864045}
+python rerank -l -0.376944308686 -s -0.499173456033 -t -0.491263717489 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.84387668888
+setting  p(e|f) from -0.5 to -1.03448596364
+setting  p(e) from -1.0 to -1.16523637173
+final weights at iteration 0  is: {'p(e)': -1.1652363717296026, 'p_lex(f|e)': -1.8438766888838116, 'p(e|f)': -1.0344859636388863}
+python rerank -l -1.16523637173 -s -1.84387668888 -t -1.03448596364 | python compute-bleu
+bleu on dev: 0.27549711083
+
+
+iteration 1
+setting  p_lex(f|e) from -1.84387668888 to -1.85106654757
+setting  p(e|f) from -1.03448596364 to -0.971294732722
+setting  p(e) from -1.16523637173 to -1.18518900118
+final weights at iteration 1  is: {'p(e)': -1.18518900117909, 'p_lex(f|e)': -1.8510665475717, 'p(e|f)': -0.9712947327224757}
+python rerank -l -1.18518900118 -s -1.85106654757 -t -0.971294732722 | python compute-bleu
+bleu on dev: 0.27844392955
+
+
+iteration 2
+setting  p_lex(f|e) from -1.85106654757 to -1.85074524405
+setting  p(e|f) from -0.971294732722 to -0.975099486576
+setting  p(e) from -1.18518900118 to -1.18629524571
+final weights at iteration 2  is: {'p(e)': -1.1862952457124325, 'p_lex(f|e)': -1.8507452440451648, 'p(e|f)': -0.9750994865759602}
+python rerank -l -1.18629524571 -s -1.85074524405 -t -0.975099486576 | python compute-bleu
+bleu on dev: 0.278465228222
+
+
+iteration 3
+setting  p_lex(f|e) from -1.85074524405 to -1.85205478238
+setting  p(e|f) from -0.975099486576 to -0.983665891968
+setting  p(e) from -1.18629524571 to -1.18632066518
+final weights at iteration 3  is: {'p(e)': -1.1863206651842777, 'p_lex(f|e)': -1.8520547823774551, 'p(e|f)': -0.9836658919683996}
+python rerank -l -1.18632066518 -s -1.85205478238 -t -0.983665891968 | python compute-bleu
+bleu on dev: 0.278465228222
+
+
+iteration 4
+setting  p_lex(f|e) from -1.85205478238 to -1.85200845641
+setting  p(e|f) from -0.983665891968 to -0.98421166221
+setting  p(e) from -1.18632066518 to -1.18653874948
+final weights at iteration 4  is: {'p(e)': -1.1865387494805704, 'p_lex(f|e)': -1.8520084564087809, 'p(e|f)': -0.9842116622103823}
+python rerank -l -1.18653874948 -s -1.85200845641 -t -0.98421166221 | python compute-bleu
+bleu on dev: 0.278465228222
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -0.5 to -1.34721549056
+setting  p(e) from -1.0 to -0.524185312225
+setting  p_lex(f|e) from -0.5 to -0.57825159017
+final weights at iteration 0  is: {'p(e)': -0.524185312225128, 'p_lex(f|e)': -0.5782515901700789, 'p(e|f)': -1.3472154905563674}
+python rerank -l -0.524185312225 -s -0.57825159017 -t -1.34721549056 | python compute-bleu
+bleu on dev: 0.276618224212
+
+
+iteration 1
+setting  p(e|f) from -1.34721549056 to -0.629077749297
+setting  p(e) from -0.524185312225 to -0.519755266727
+setting  p_lex(f|e) from -0.57825159017 to -0.637960999147
+final weights at iteration 1  is: {'p(e)': -0.5197552667267308, 'p_lex(f|e)': -0.6379609991473203, 'p(e|f)': -0.6290777492974389}
+python rerank -l -0.519755266727 -s -0.637960999147 -t -0.629077749297 | python compute-bleu
+bleu on dev: 0.276541416013
+
+
+iteration 2
+setting  p(e|f) from -0.629077749297 to -0.623638590838
+setting  p(e) from -0.519755266727 to -0.480010682893
+setting  p_lex(f|e) from -0.637960999147 to -0.634662038901
+final weights at iteration 2  is: {'p(e)': -0.480010682892662, 'p_lex(f|e)': -0.6346620389006303, 'p(e|f)': -0.623638590838267}
+python rerank -l -0.480010682893 -s -0.634662038901 -t -0.623638590838 | python compute-bleu
+bleu on dev: 0.276693313466
+
+
+iteration 3
+setting  p(e|f) from -0.623638590838 to -0.624435025411
+setting  p(e) from -0.480010682893 to -0.479079115212
+setting  p_lex(f|e) from -0.634662038901 to -0.634185582098
+final weights at iteration 3  is: {'p(e)': -0.47907911521192026, 'p_lex(f|e)': -0.6341855820976562, 'p(e|f)': -0.6244350254112546}
+python rerank -l -0.479079115212 -s -0.634185582098 -t -0.624435025411 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p(e|f) from -0.624435025411 to -0.624073884278
+setting  p(e) from -0.479079115212 to -0.478665584651
+setting  p_lex(f|e) from -0.634185582098 to -0.633790224518
+final weights at iteration 4  is: {'p(e)': -0.4786655846508595, 'p_lex(f|e)': -0.6337902245180307, 'p(e|f)': -0.6240738842780431}
+python rerank -l -0.478665584651 -s -0.633790224518 -t -0.624073884278 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.755479285615
+setting  p_lex(f|e) from -1.0 to -1.00052325927
+setting  p(e|f) from -1.0 to -0.984687431717
+final weights at iteration 0  is: {'p(e)': -0.755479285614814, 'p_lex(f|e)': -1.000523259265186, 'p(e|f)': -0.9846874317166241}
+python rerank -l -0.755479285615 -s -1.00052325927 -t -0.984687431717 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 1
+setting  p(e) from -0.755479285615 to -0.755108534415
+setting  p_lex(f|e) from -1.00052325927 to -0.999987211188
+setting  p(e|f) from -0.984687431717 to -0.984148180247
+final weights at iteration 1  is: {'p(e)': -0.7551085344146637, 'p_lex(f|e)': -0.9999872111878478, 'p(e|f)': -0.9841481802466501}
+python rerank -l -0.755108534415 -s -0.999987211188 -t -0.984148180247 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 2
+setting  p(e) from -0.755108534415 to -0.754709821436
+setting  p_lex(f|e) from -0.999987211188 to -0.999442683103
+setting  p(e|f) from -0.984148180247 to -0.983607991687
+final weights at iteration 2  is: {'p(e)': -0.7547098214358683, 'p_lex(f|e)': -0.9994426831032415, 'p(e|f)': -0.9836079916868321}
+python rerank -l -0.754709821436 -s -0.999442683103 -t -0.983607991687 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 3
+setting  p(e) from -0.754709821436 to -0.754301000359
+setting  p_lex(f|e) from -0.999442683103 to -0.998895236977
+setting  p(e|f) from -0.983607991687 to -0.983067647756
+final weights at iteration 3  is: {'p(e)': -0.7543010003591939, 'p_lex(f|e)': -0.9988952369770537, 'p(e|f)': -0.983067647755999}
+python rerank -l -0.754301000359 -s -0.998895236977 -t -0.983067647756 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p(e) from -0.754301000359 to -0.753888617372
+setting  p_lex(f|e) from -0.998895236977 to -0.998346912066
+setting  p(e|f) from -0.983067647756 to -0.982527434977
+final weights at iteration 4  is: {'p(e)': -0.7538886173715362, 'p_lex(f|e)': -0.9983469120656363, 'p(e|f)': -0.9825274349772809}
+python rerank -l -0.753888617372 -s -0.998346912066 -t -0.982527434977 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -1.32008649101
+setting  p(e|f) from -1.0 to -1.30122709345
+setting  p(e) from -1.0 to -0.995269057703
+final weights at iteration 0  is: {'p(e)': -0.9952690577032153, 'p_lex(f|e)': -1.32008649100549, 'p(e|f)': -1.3012270934498713}
+python rerank -l -0.995269057703 -s -1.32008649101 -t -1.30122709345 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 1
+setting  p_lex(f|e) from -1.32008649101 to -1.32090522645
+setting  p(e|f) from -1.30122709345 to -1.30072900189
+setting  p(e) from -0.995269057703 to -0.996539566372
+final weights at iteration 1  is: {'p(e)': -0.9965395663716858, 'p_lex(f|e)': -1.320905226446162, 'p(e|f)': -1.300729001892161}
+python rerank -l -0.996539566372 -s -1.32090522645 -t -1.30072900189 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 2
+setting  p_lex(f|e) from -1.32090522645 to -1.32074546395
+setting  p(e|f) from -1.30072900189 to -1.30009369753
+setting  p(e) from -0.996539566372 to -0.99665827003
+final weights at iteration 2  is: {'p(e)': -0.9966582700304154, 'p_lex(f|e)': -1.3207454639480605, 'p(e|f)': -1.3000936975295494}
+python rerank -l -0.99665827003 -s -1.32074546395 -t -1.30009369753 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 3
+setting  p_lex(f|e) from -1.32074546395 to -1.32022717624
+setting  p(e|f) from -1.30009369753 to -1.29940833124
+setting  p(e) from -0.99665827003 to -0.996354841357
+final weights at iteration 3  is: {'p(e)': -0.9963548413569471, 'p_lex(f|e)': -1.3202271762413924, 'p(e|f)': -1.299408331241536}
+python rerank -l -0.996354841357 -s -1.32022717624 -t -1.29940833124 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p_lex(f|e) from -1.32022717624 to -1.31957768363
+setting  p(e|f) from -1.29940833124 to -1.29870485781
+setting  p(e) from -0.996354841357 to -0.995896823489
+final weights at iteration 4  is: {'p(e)': -0.9958968234891117, 'p_lex(f|e)': -1.3195776836279087, 'p(e|f)': -1.2987048578070948}
+python rerank -l -0.995896823489 -s -1.31957768363 -t -1.29870485781 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.29508210188
+setting  p(e) from -1.0 to -1.00026334885
+setting  p_lex(f|e) from -1.0 to -1.10638920471
+final weights at iteration 0  is: {'p(e)': -1.0002633488511046, 'p_lex(f|e)': -1.106389204714942, 'p(e|f)': -2.2950821018820347}
+python rerank -l -1.00026334885 -s -1.10638920471 -t -2.29508210188 | python compute-bleu
+bleu on dev: 0.277288434312
+
+
+iteration 1
+setting  p(e|f) from -2.29508210188 to -1.22634954484
+setting  p(e) from -1.00026334885 to -0.99610734779
+setting  p_lex(f|e) from -1.10638920471 to -1.29474594056
+final weights at iteration 1  is: {'p(e)': -0.9961073477903449, 'p_lex(f|e)': -1.2947459405601176, 'p(e|f)': -1.2263495448437916}
+python rerank -l -0.99610734779 -s -1.29474594056 -t -1.22634954484 | python compute-bleu
+bleu on dev: 0.276330226742
+
+
+iteration 2
+setting  p(e|f) from -1.22634954484 to -1.23224413292
+setting  p(e) from -0.99610734779 to -0.999369151197
+setting  p_lex(f|e) from -1.29474594056 to -1.29385856328
+final weights at iteration 2  is: {'p(e)': -0.9993691511967008, 'p_lex(f|e)': -1.2938585632832054, 'p(e|f)': -1.2322441329153777}
+python rerank -l -0.999369151197 -s -1.29385856328 -t -1.23224413292 | python compute-bleu
+bleu on dev: 0.27666830457
+
+
+iteration 3
+setting  p(e|f) from -1.23224413292 to -1.23309702445
+setting  p(e) from -0.999369151197 to -0.999278159305
+setting  p_lex(f|e) from -1.29385856328 to -1.29684837183
+final weights at iteration 3  is: {'p(e)': -0.9992781593050246, 'p_lex(f|e)': -1.2968483718348658, 'p(e|f)': -1.2330970244507706}
+python rerank -l -0.999278159305 -s -1.29684837183 -t -1.23309702445 | python compute-bleu
+bleu on dev: 0.27666830457
+
+
+iteration 4
+setting  p(e|f) from -1.23309702445 to -1.23327124357
+setting  p(e) from -0.999278159305 to -0.99923752771
+setting  p_lex(f|e) from -1.29684837183 to -1.29688890871
+final weights at iteration 4  is: {'p(e)': -0.9992375277098562, 'p_lex(f|e)': -1.2968889087128044, 'p(e|f)': -1.2332712435728392}
+python rerank -l -0.99923752771 -s -1.29688890871 -t -1.23327124357 | python compute-bleu
+bleu on dev: 0.27666830457
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.464879728327
+setting  p_lex(f|e) from -0.5 to -0.499909139713
+setting  p(e|f) from -1.0 to -1.01468886534
+final weights at iteration 0  is: {'p(e)': -0.4648797283268937, 'p_lex(f|e)': -0.4999091397132511, 'p(e|f)': -1.0146888653389876}
+python rerank -l -0.464879728327 -s -0.499909139713 -t -1.01468886534 | python compute-bleu
+bleu on dev: 0.276435545235
+
+
+iteration 1
+setting  p(e) from -0.464879728327 to -0.463075386628
+setting  p_lex(f|e) from -0.499909139713 to -0.500520867777
+setting  p(e|f) from -1.01468886534 to -1.01407112895
+final weights at iteration 1  is: {'p(e)': -0.46307538662843223, 'p_lex(f|e)': -0.5005208677774711, 'p(e|f)': -1.014071128953646}
+python rerank -l -0.463075386628 -s -0.500520867777 -t -1.01407112895 | python compute-bleu
+bleu on dev: 0.276496514626
+
+
+iteration 2
+setting  p(e) from -0.463075386628 to -0.463312515972
+setting  p_lex(f|e) from -0.500520867777 to -0.500458511944
+setting  p(e|f) from -1.01407112895 to -1.01417578356
+final weights at iteration 2  is: {'p(e)': -0.46331251597188916, 'p_lex(f|e)': -0.5004585119439469, 'p(e|f)': -1.0141757835584664}
+python rerank -l -0.463312515972 -s -0.500458511944 -t -1.01417578356 | python compute-bleu
+bleu on dev: 0.276496514626
+
+
+iteration 3
+setting  p(e) from -0.463312515972 to -0.463295732214
+setting  p_lex(f|e) from -0.500458511944 to -0.50047999743
+setting  p(e|f) from -1.01417578356 to -1.01419058953
+final weights at iteration 3  is: {'p(e)': -0.463295732213982, 'p_lex(f|e)': -0.5004799974299668, 'p(e|f)': -1.014190589533981}
+python rerank -l -0.463295732214 -s -0.50047999743 -t -1.01419058953 | python compute-bleu
+bleu on dev: 0.276496514626
+
+
+iteration 4
+setting  p(e) from -0.463295732214 to -0.463310529886
+setting  p_lex(f|e) from -0.50047999743 to -0.500491055263
+setting  p(e|f) from -1.01419058953 to -1.01421657135
+final weights at iteration 4  is: {'p(e)': -0.4633105298861057, 'p_lex(f|e)': -0.5004910552630175, 'p(e|f)': -1.0142165713515108}
+python rerank -l -0.463310529886 -s -0.500491055263 -t -1.01421657135 | python compute-bleu
+bleu on dev: 0.276496514626
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.32008649101
+setting  p(e|f) from -1.0 to -1.30122709345
+setting  p(e) from -1.0 to -0.995269057703
+final weights at iteration 0  is: {'p(e)': -0.9952690577032153, 'p_lex(f|e)': -1.32008649100549, 'p(e|f)': -1.3012270934498713}
+python rerank -l -0.995269057703 -s -1.32008649101 -t -1.30122709345 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 1
+setting  p_lex(f|e) from -1.32008649101 to -1.32090522645
+setting  p(e|f) from -1.30122709345 to -1.30072900189
+setting  p(e) from -0.995269057703 to -0.996539566372
+final weights at iteration 1  is: {'p(e)': -0.9965395663716858, 'p_lex(f|e)': -1.320905226446162, 'p(e|f)': -1.300729001892161}
+python rerank -l -0.996539566372 -s -1.32090522645 -t -1.30072900189 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 2
+setting  p_lex(f|e) from -1.32090522645 to -1.32074546395
+setting  p(e|f) from -1.30072900189 to -1.30009369753
+setting  p(e) from -0.996539566372 to -0.99665827003
+final weights at iteration 2  is: {'p(e)': -0.9966582700304154, 'p_lex(f|e)': -1.3207454639480605, 'p(e|f)': -1.3000936975295494}
+python rerank -l -0.99665827003 -s -1.32074546395 -t -1.30009369753 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 3
+setting  p_lex(f|e) from -1.32074546395 to -1.32022717624
+setting  p(e|f) from -1.30009369753 to -1.29940833124
+setting  p(e) from -0.99665827003 to -0.996354841357
+final weights at iteration 3  is: {'p(e)': -0.9963548413569471, 'p_lex(f|e)': -1.3202271762413924, 'p(e|f)': -1.299408331241536}
+python rerank -l -0.996354841357 -s -1.32022717624 -t -1.29940833124 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p_lex(f|e) from -1.32022717624 to -1.31957768363
+setting  p(e|f) from -1.29940833124 to -1.29870485781
+setting  p(e) from -0.996354841357 to -0.995896823489
+final weights at iteration 4  is: {'p(e)': -0.9958968234891117, 'p_lex(f|e)': -1.3195776836279087, 'p(e|f)': -1.2987048578070948}
+python rerank -l -0.995896823489 -s -1.31957768363 -t -1.29870485781 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -1.34721549056
+setting  p(e) from -1.0 to -0.524185312225
+setting  p_lex(f|e) from -0.5 to -0.57825159017
+final weights at iteration 0  is: {'p(e)': -0.524185312225128, 'p_lex(f|e)': -0.5782515901700789, 'p(e|f)': -1.3472154905563674}
+python rerank -l -0.524185312225 -s -0.57825159017 -t -1.34721549056 | python compute-bleu
+bleu on dev: 0.276618224212
+
+
+iteration 1
+setting  p(e|f) from -1.34721549056 to -0.629077749297
+setting  p(e) from -0.524185312225 to -0.519755266727
+setting  p_lex(f|e) from -0.57825159017 to -0.637960999147
+final weights at iteration 1  is: {'p(e)': -0.5197552667267308, 'p_lex(f|e)': -0.6379609991473203, 'p(e|f)': -0.6290777492974389}
+python rerank -l -0.519755266727 -s -0.637960999147 -t -0.629077749297 | python compute-bleu
+bleu on dev: 0.276541416013
+
+
+iteration 2
+setting  p(e|f) from -0.629077749297 to -0.623638590838
+setting  p(e) from -0.519755266727 to -0.480010682893
+setting  p_lex(f|e) from -0.637960999147 to -0.634662038901
+final weights at iteration 2  is: {'p(e)': -0.480010682892662, 'p_lex(f|e)': -0.6346620389006303, 'p(e|f)': -0.623638590838267}
+python rerank -l -0.480010682893 -s -0.634662038901 -t -0.623638590838 | python compute-bleu
+bleu on dev: 0.276693313466
+
+
+iteration 3
+setting  p(e|f) from -0.623638590838 to -0.624435025411
+setting  p(e) from -0.480010682893 to -0.479079115212
+setting  p_lex(f|e) from -0.634662038901 to -0.634185582098
+final weights at iteration 3  is: {'p(e)': -0.47907911521192026, 'p_lex(f|e)': -0.6341855820976562, 'p(e|f)': -0.6244350254112546}
+python rerank -l -0.479079115212 -s -0.634185582098 -t -0.624435025411 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p(e|f) from -0.624435025411 to -0.624073884278
+setting  p(e) from -0.479079115212 to -0.478665584651
+setting  p_lex(f|e) from -0.634185582098 to -0.633790224518
+final weights at iteration 4  is: {'p(e)': -0.4786655846508595, 'p_lex(f|e)': -0.6337902245180307, 'p(e|f)': -0.6240738842780431}
+python rerank -l -0.478665584651 -s -0.633790224518 -t -0.624073884278 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train.100best
+data reference: data/train.ref
+initial feature values: {'p(e)': -0.5, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -0.5 to -0.755479285615
+setting  p_lex(f|e) from -1.0 to -1.00052325927
+setting  p(e|f) from -1.0 to -0.984687431717
+final weights at iteration 0  is: {'p(e)': -0.755479285614814, 'p_lex(f|e)': -1.000523259265186, 'p(e|f)': -0.9846874317166241}
+python rerank -l -0.755479285615 -s -1.00052325927 -t -0.984687431717 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 1
+setting  p(e) from -0.755479285615 to -0.755108534415
+setting  p_lex(f|e) from -1.00052325927 to -0.999987211188
+setting  p(e|f) from -0.984687431717 to -0.984148180247
+final weights at iteration 1  is: {'p(e)': -0.7551085344146637, 'p_lex(f|e)': -0.9999872111878478, 'p(e|f)': -0.9841481802466501}
+python rerank -l -0.755108534415 -s -0.999987211188 -t -0.984148180247 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 2
+setting  p(e) from -0.755108534415 to -0.754709821436
+setting  p_lex(f|e) from -0.999987211188 to -0.999442683103
+setting  p(e|f) from -0.984148180247 to -0.983607991687
+final weights at iteration 2  is: {'p(e)': -0.7547098214358683, 'p_lex(f|e)': -0.9994426831032415, 'p(e|f)': -0.9836079916868321}
+python rerank -l -0.754709821436 -s -0.999442683103 -t -0.983607991687 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 3
+setting  p(e) from -0.754709821436 to -0.754301000359
+setting  p_lex(f|e) from -0.999442683103 to -0.998895236977
+setting  p(e|f) from -0.983607991687 to -0.983067647756
+final weights at iteration 3  is: {'p(e)': -0.7543010003591939, 'p_lex(f|e)': -0.9988952369770537, 'p(e|f)': -0.983067647755999}
+python rerank -l -0.754301000359 -s -0.998895236977 -t -0.983067647756 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+iteration 4
+setting  p(e) from -0.754301000359 to -0.753888617372
+setting  p_lex(f|e) from -0.998895236977 to -0.998346912066
+setting  p(e|f) from -0.983067647756 to -0.982527434977
+final weights at iteration 4  is: {'p(e)': -0.7538886173715362, 'p_lex(f|e)': -0.9983469120656363, 'p(e|f)': -0.9825274349772809}
+python rerank -l -0.753888617372 -s -0.998346912066 -t -0.982527434977 | python compute-bleu
+bleu on dev: 0.276299076787
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -0.542367569925
+setting  p(e|f) from -1.0 to -1.11945722318
+setting  p(e) from -0.5 to -0.499133497685
+final weights at iteration 0  is: {'p(e)': -0.4991334976845664, 'p_lex(f|e)': -0.542367569924588, 'p(e|f)': -1.1194572231817221}
+python rerank -l -0.499133497685 -s -0.542367569925 -t -1.11945722318 | python compute-bleu
+bleu on dev: 0.277218145559
+
+
+iteration 1
+setting  p_lex(f|e) from -0.542367569925 to -0.544629641192
+setting  p(e|f) from -1.11945722318 to -1.12022148806
+setting  p(e) from -0.499133497685 to -0.498938053842
+final weights at iteration 1  is: {'p(e)': -0.4989380538421936, 'p_lex(f|e)': -0.5446296411917138, 'p(e|f)': -1.1202214880605865}
+python rerank -l -0.498938053842 -s -0.544629641192 -t -1.12022148806 | python compute-bleu
+bleu on dev: 0.277218145559
+
+
+iteration 2
+setting  p_lex(f|e) from -0.544629641192 to -0.544795128744
+setting  p(e|f) from -1.12022148806 to -1.12015433534
+setting  p(e) from -0.498938053842 to -0.499001501834
+final weights at iteration 2  is: {'p(e)': -0.4990015018339813, 'p_lex(f|e)': -0.5447951287439542, 'p(e|f)': -1.120154335337558}
+python rerank -l -0.499001501834 -s -0.544795128744 -t -1.12015433534 | python compute-bleu
+bleu on dev: 0.277218145559
+
+
+iteration 3
+setting  p_lex(f|e) from -0.544795128744 to -0.544798395088
+setting  p(e|f) from -1.12015433534 to -1.12023203286
+setting  p(e) from -0.499001501834 to -0.499019847987
+final weights at iteration 3  is: {'p(e)': -0.49901984798710597, 'p_lex(f|e)': -0.5447983950880759, 'p(e|f)': -1.1202320328621314}
+python rerank -l -0.499019847987 -s -0.544798395088 -t -1.12023203286 | python compute-bleu
+bleu on dev: 0.277218145559
+
+
+iteration 4
+setting  p_lex(f|e) from -0.544798395088 to -0.544829924707
+setting  p(e|f) from -1.12023203286 to -1.12028449835
+setting  p(e) from -0.499019847987 to -0.499046053115
+final weights at iteration 4  is: {'p(e)': -0.49904605311463024, 'p_lex(f|e)': -0.5448299247068127, 'p(e|f)': -1.1202844983478277}
+python rerank -l -0.499046053115 -s -0.544829924707 -t -1.12028449835 | python compute-bleu
+bleu on dev: 0.277218145559
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -0.410636403128
+setting  p(e) from -0.5 to -0.50102570703
+setting  p_lex(f|e) from -1.0 to -0.782288385901
+final weights at iteration 0  is: {'p(e)': -0.5010257070295696, 'p_lex(f|e)': -0.7822883859008821, 'p(e|f)': -0.41063640312771976}
+python rerank -l -0.50102570703 -s -0.782288385901 -t -0.410636403128 | python compute-bleu
+bleu on dev: 0.27844392955
+
+
+iteration 1
+setting  p(e|f) from -0.410636403128 to -0.412848874073
+setting  p(e) from -0.50102570703 to -0.501536302055
+setting  p_lex(f|e) from -0.782288385901 to -0.782789450658
+final weights at iteration 1  is: {'p(e)': -0.5015363020550812, 'p_lex(f|e)': -0.7827894506576663, 'p(e|f)': -0.41284887407253945}
+python rerank -l -0.501536302055 -s -0.782789450658 -t -0.412848874073 | python compute-bleu
+bleu on dev: 0.278465228222
+
+
+iteration 2
+setting  p(e|f) from -0.412848874073 to -0.418052685336
+setting  p(e) from -0.501536302055 to -0.501691798174
+setting  p_lex(f|e) from -0.782789450658 to -0.782795807823
+final weights at iteration 2  is: {'p(e)': -0.5016917981739799, 'p_lex(f|e)': -0.782795807823158, 'p(e|f)': -0.41805268533602497}
+python rerank -l -0.501691798174 -s -0.782795807823 -t -0.418052685336 | python compute-bleu
+bleu on dev: 0.278465228222
+
+
+iteration 3
+setting  p(e|f) from -0.418052685336 to -0.419592750572
+setting  p(e) from -0.501691798174 to -0.501734451545
+setting  p_lex(f|e) from -0.782795807823 to -0.7828007082
+final weights at iteration 3  is: {'p(e)': -0.5017344515445576, 'p_lex(f|e)': -0.7828007081998256, 'p(e|f)': -0.41959275057234546}
+python rerank -l -0.501734451545 -s -0.7828007082 -t -0.419592750572 | python compute-bleu
+bleu on dev: 0.278475188527
+
+
+iteration 4
+setting  p(e|f) from -0.419592750572 to -0.41986035351
+setting  p(e) from -0.501734451545 to -0.501744244841
+setting  p_lex(f|e) from -0.7828007082 to -0.782805357396
+final weights at iteration 4  is: {'p(e)': -0.5017442448414096, 'p_lex(f|e)': -0.782805357396387, 'p(e|f)': -0.4198603535103522}
+python rerank -l -0.501744244841 -s -0.782805357396 -t -0.41986035351 | python compute-bleu
+bleu on dev: 0.278475188527
+

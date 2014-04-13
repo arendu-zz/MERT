@@ -3,8 +3,7 @@ __author__ = 'arenduchintala'
 import optparse
 import sweep_line as sl
 import bleu
-import os
-from pprint import pprint
+import subprocess
 
 
 def mid_point((x1, x2)):
@@ -42,7 +41,7 @@ if __name__ == '__main__':
     optparser.add_option("-l", "--lm", dest="lm", default=-1.0, type="float", help="Language model weight")
     optparser.add_option("-t", "--tm1", dest="tm1", default=-1.0, type="float", help="Translation model p(e|f) weight")
     optparser.add_option("-s", "--tm2", dest="tm2", default=-1.0, type="float", help="Lexical translation model p_lex(f|e) weight")
-    optparser.add_option("-m", "--ef", dest="error_function", default="meteor", help="use bleu , editdistance or meteor")
+    optparser.add_option("-m", "--ef", dest="error_function", default="bleu", help="use bleu , editdistance or meteor")
 
     (opts, _) = optparser.parse_args()
     weights = {'p(e)': float(opts.lm), 'p(e|f)': float(opts.tm1), 'p_lex(f|e)': float(opts.tm2)}
@@ -52,8 +51,8 @@ if __name__ == '__main__':
     num_sents = len(all_hyps) / 100
     ef = opts.error_function
     #permutations = it.permutations(weights.keys())
-
-    print '\n******************MERT Run Instance********************'
+    print ''
+    print '******************MERT Run Instance********************'
     print 'method:', opts.error_function
     print 'data train:', opts.input
     print 'data reference:', opts.reference
@@ -63,9 +62,11 @@ if __name__ == '__main__':
         wts = list(weights.keys())
         for _ in xrange(o):
             wts.append(wts.pop(0))
-        print '\ninitial ordering:', wts
+        print ''
+        print 'initial ordering:', wts
         for p in xrange(5):
-            print '\niteration', p
+            print ''
+            print 'iteration', p
             for w in wts:
                 inflexion_points = []
                 for s in xrange(0, 400):
@@ -118,11 +119,12 @@ if __name__ == '__main__':
                 #        break
 
                 #print 'max score', max(score_ranges), 'max ranges', score_ranges[max(score_ranges)]
-                print '\tsetting ', w, 'from', weights[w], 'to', mid_point(min(score_ranges[max(score_ranges)]))
+                print 'setting ', w, 'from', weights[w], 'to', mid_point(min(score_ranges[max(score_ranges)]))
                 weights[w] = mid_point(min(score_ranges[max(score_ranges)]))
 
             print 'final weights at iteration', p, ' is:', weights
             cmd_opts = ' '.join([str(weights_cmd[i] + ' ' + str(weights[i])) for i in weights])
             cmd = 'python rerank ' + cmd_opts + ' | python compute-bleu'
             print cmd
-            os.system(cmd)
+            result = subprocess.check_output(cmd, shell=True)
+            print 'bleu on dev:', result
