@@ -44,8 +44,8 @@ def get_upper_intersections(sort_seg):
 
 
 def get_score(h, r):
-    #return metrics.get_ed_score(h, r)
-    return metrics.get_bleu_score(h, r)
+    return metrics.get_ed_score(h, r)
+    #return metrics.get_bleu_stats(h, r)
     #return metrics.get_meteor_score(h, r)
 
 
@@ -85,8 +85,8 @@ def filter_highest_lines(segs):
 
 if __name__ == '__main__':
     seg = [[-0.5, 2, 'A1', 'R1'], [-0.5, -1, 'B1', 'R1'], [0.2, 1, 'C1', 'R1'], [5, -40, 'D1', 'R1']]
-    #seg2 = [[-0.15, 2, 'A2', 'R2'], [-1.95, -1, 'B2', 'R2'], [1.2, 1, 'C2', 'R2'], [0.5, -40, 'D2', 'R2']]
-    segs = [seg]
+    seg2 = [[-0.15, 2, 'A2', 'R2'], [-1.95, -1, 'B2', 'R2'], [1.2, 1, 'C2', 'R2'], [0.5, -40, 'D2', 'R2']]
+    segs = [seg, seg2]
 
     inflexion_points = []
     for s in segs:

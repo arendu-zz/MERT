@@ -26,14 +26,17 @@ def get_meteor_score(h, ref, alpha=0.5):
 
 
 def get_ed_score(h, r):
-    eds = ed.editdistance(h.split(), r.split())
-    return 1 - (eds / len(r.split()))
+    h = h.split()
+    r = r.split()
+    return ed.edratio(h, r)
 
 
-def get_bleu_score(h, r):
+def get_bleu_stats(h, r):
+    h = h.split()
+    r = r.split()
     stats = [0 for i in xrange(10)]
     stats = [sum(scores) for scores in zip(stats, bleu.bleu_stats(h, r))]
-    return bleu.bleu(stats)
+    return stats
 
 
 
