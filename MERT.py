@@ -122,9 +122,13 @@ if __name__ == '__main__':
                 print 'setting ', w, 'from', weights[w], 'to', mid_point(min(score_ranges[max(score_ranges)]))
                 weights[w] = mid_point(min(score_ranges[max(score_ranges)]))
 
-            print 'final weights at iteration', p, ' is:', weights
+            info_str = 'info for trial:' + str(o) + '-' + str(p) + '\n' + 'weights:' + str(weights) + '\nmethod:' + ef
             cmd_opts = ' '.join([str(weights_cmd[i] + ' ' + str(weights[i])) for i in weights])
-            cmd = 'python rerank ' + cmd_opts + ' | python compute-bleu'
-            print cmd
-            result = subprocess.check_output(cmd, shell=True)
+            #cmd = 'python rerank ' + cmd_opts + ' > outputs/' + str(o) + '-' + str(p) + '.out'
+            #print cmd
+            #subprocess.call(cmd)
+
+            cmd2 = 'python rerank ' + cmd_opts + ' | python compute-bleu'
+            print cmd2
+            result = subprocess.check_output(cmd2, shell=True)
             print 'bleu on dev:', result
