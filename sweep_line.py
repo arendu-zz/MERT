@@ -22,7 +22,7 @@ def sum_bleu_scores_per_range(range_marker_dict):
     return range_bleu_scores
 
 
-def get_upper_intersections(sort_seg):
+def get_upper_intersections(sort_seg, default=-1.0):
     upper = []
     K = len(sort_seg)
     i = 0
@@ -40,6 +40,9 @@ def get_upper_intersections(sort_seg):
         (mx, my, mhyp_pair, ref) = min(points_to_lines)
         upper.append((mx, my, mhyp_pair, ref))
         i = points_to_lines[(mx, my, mhyp_pair, ref)]
+    if 0 == len(upper):
+        [m, c, h, ref] = sort_seg[0]
+        upper.append((default, c, (h, h), ref))
     return upper
 
 
@@ -87,9 +90,10 @@ def filter_highest_lines(segs):
 
 
 if __name__ == '__main__':
-    seg = [[-0.5, 2, 'A1', 'R1'], [-0.5, -1, 'B1', 'R1'], [0.2, 1, 'C1', 'R1'], [5, -40, 'D1', 'R1']]
-    seg2 = [[-0.15, 2, 'A2', 'R2'], [-1.95, -1, 'B2', 'R2'], [1.2, 1, 'C2', 'R2'], [0.5, -40, 'D2', 'R2']]
-    segs = [seg, seg2]
+    #seg = [[-0.5, 2, 'A1', 'R1'], [-0.5, -1, 'B1', 'R1'], [0.2, 1, 'C1', 'R1'], [5, -40, 'D1', 'R1']]
+    #seg2 = [[-0.15, 2, 'A2', 'R2'], [-1.95, -1, 'B2', 'R2'], [1.2, 1, 'C2', 'R2'], [0.5, -40, 'D2', 'R2']]
+    seg3 = [[10, 2, 'A3', 'R3'], [10, -2, 'B3', 'R3']]
+    segs = [seg3]
 
     inflexion_points = []
     for s in segs:

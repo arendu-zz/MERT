@@ -1,0 +1,432 @@
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -0.5}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.40454867575
+setting  p_lex(f|e) from -0.5 to -0.500478768234
+setting  p(e|f) from -0.5 to -0.484888185106
+python rerank -l -0.40454867575 -s -0.500478768234 -t -0.484888185106 | python compute-bleu
+bleu on dev: 0.27700096749
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.24147942612
+setting  p(e|f) from -0.5 to -1.19977103103
+setting  p(e) from -1.0 to -1.00032589609
+python rerank -l -1.00032589609 -s -1.24147942612 -t -1.19977103103 | python compute-bleu
+bleu on dev: 0.27700096749
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -0.5 to -3.29802423432
+setting  p(e) from -1.0 to -0.999995685237
+setting  p_lex(f|e) from -0.5 to -0.605579301809
+python rerank -l -0.999995685237 -s -0.605579301809 -t -3.29802423432 | python compute-bleu
+bleu on dev: 0.272599419589
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.809097351499
+setting  p_lex(f|e) from -1.0 to -1.00095753647
+setting  p(e|f) from -1.0 to -0.969776370212
+python rerank -l -0.809097351499 -s -1.00095753647 -t -0.969776370212 | python compute-bleu
+bleu on dev: 0.27700096749
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -1.28380692524
+setting  p(e|f) from -1.0 to -1.24113839429
+setting  p(e) from -1.0 to -1.03454864393
+python rerank -l -1.03454864393 -s -1.28380692524 -t -1.24113839429 | python compute-bleu
+bleu on dev: 0.27700096749
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.22270150073
+setting  p(e) from -1.0 to -0.967327931753
+setting  p_lex(f|e) from -1.0 to -1.02421553393
+python rerank -l -0.967327931753 -s -1.02421553393 -t -2.22270150073 | python compute-bleu
+bleu on dev: 0.278001669251
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.464879728327
+setting  p_lex(f|e) from -0.5 to -0.491474539876
+setting  p(e|f) from -1.0 to -1.06833074992
+python rerank -l -0.464879728327 -s -0.491474539876 -t -1.06833074992 | python compute-bleu
+bleu on dev: 0.278001669251
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.28380692524
+setting  p(e|f) from -1.0 to -1.24113839429
+setting  p(e) from -1.0 to -1.03454864393
+python rerank -l -1.03454864393 -s -1.28380692524 -t -1.24113839429 | python compute-bleu
+bleu on dev: 0.27700096749
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -3.29802423432
+setting  p(e) from -1.0 to -0.999995685237
+setting  p_lex(f|e) from -0.5 to -0.605579301809
+python rerank -l -0.999995685237 -s -0.605579301809 -t -3.29802423432 | python compute-bleu
+bleu on dev: 0.272599419589
+
+
+******************MERT Run Instance********************
+method: meteor
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -0.5, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -0.5 to -0.809097351499
+setting  p_lex(f|e) from -1.0 to -1.00095753647
+setting  p(e|f) from -1.0 to -0.969776370212
+python rerank -l -0.809097351499 -s -1.00095753647 -t -0.969776370212 | python compute-bleu
+bleu on dev: 0.27700096749
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -0.534236344634
+setting  p(e|f) from -1.0 to -1.14610929174
+setting  p(e) from -0.5 to -0.499284276116
+python rerank -l -0.499284276116 -s -0.534236344634 -t -1.14610929174 | python compute-bleu
+bleu on dev: 0.278126640275
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -0.603558154967
+setting  p(e) from -0.5 to -0.561359046317
+setting  p_lex(f|e) from -1.0 to -0.702182782332
+python rerank -l -0.561359046317 -s -0.702182782332 -t -0.603558154967 | python compute-bleu
+bleu on dev: 0.277985873599
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -0.5}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.378746317608
+setting  p_lex(f|e) from -0.5 to -0.500048656195
+setting  p(e|f) from -0.5 to -0.498684385531
+python rerank -l -0.378746317608 -s -0.500048656195 -t -0.498684385531 | python compute-bleu
+bleu on dev: 0.276744174084
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.78583932432
+setting  p(e|f) from -0.5 to -1.05355157108
+setting  p(e) from -1.0 to -0.993893013434
+python rerank -l -0.993893013434 -s -1.78583932432 -t -1.05355157108 | python compute-bleu
+bleu on dev: 0.276438550345
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -0.5 to -1.65678161597
+setting  p(e) from -1.0 to -0.266180952799
+setting  p_lex(f|e) from -0.5 to -0.473423719566
+python rerank -l -0.266180952799 -s -0.473423719566 -t -1.65678161597 | python compute-bleu
+bleu on dev: 0.273118790004
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.757492635217
+setting  p_lex(f|e) from -1.0 to -1.00009731239
+setting  p(e|f) from -1.0 to -0.997368771061
+python rerank -l -0.757492635217 -s -1.00009731239 -t -0.997368771061 | python compute-bleu
+bleu on dev: 0.276744174084
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -1.23752749014
+setting  p(e|f) from -1.0 to -1.01094337871
+setting  p(e) from -1.0 to -1.00055489662
+python rerank -l -1.00055489662 -s -1.23752749014 -t -1.01094337871 | python compute-bleu
+bleu on dev: 0.27944287625
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -1.09431586729
+setting  p(e) from -1.0 to -0.899679558265
+setting  p_lex(f|e) from -1.0 to -1.14002338018
+python rerank -l -0.899679558265 -s -1.14002338018 -t -1.09431586729 | python compute-bleu
+bleu on dev: 0.27725334717
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.448941359084
+setting  p_lex(f|e) from -0.5 to -0.492632764852
+setting  p(e|f) from -1.0 to -0.484676734312
+python rerank -l -0.448941359084 -s -0.492632764852 -t -0.484676734312 | python compute-bleu
+bleu on dev: 0.279368521398
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.23752749014
+setting  p(e|f) from -1.0 to -1.01094337871
+setting  p(e) from -1.0 to -1.00055489662
+python rerank -l -1.00055489662 -s -1.23752749014 -t -1.01094337871 | python compute-bleu
+bleu on dev: 0.27944287625
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -1.65678161597
+setting  p(e) from -1.0 to -0.266180952799
+setting  p_lex(f|e) from -0.5 to -0.473423719566
+python rerank -l -0.266180952799 -s -0.473423719566 -t -1.65678161597 | python compute-bleu
+bleu on dev: 0.273118790004
+
+
+******************MERT Run Instance********************
+method: bleu
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -0.5, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -0.5 to -0.757492635217
+setting  p_lex(f|e) from -1.0 to -1.00009731239
+setting  p(e|f) from -1.0 to -0.997368771061
+python rerank -l -0.757492635217 -s -1.00009731239 -t -0.997368771061 | python compute-bleu
+bleu on dev: 0.276744174084
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -0.853289579442
+setting  p(e|f) from -1.0 to -0.825370850007
+setting  p(e) from -0.5 to -0.763979435141
+python rerank -l -0.763979435141 -s -0.853289579442 -t -0.825370850007 | python compute-bleu
+bleu on dev: 0.279156100304
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -0.410636403128
+setting  p(e) from -0.5 to -0.50102570703
+setting  p_lex(f|e) from -1.0 to -0.998475507076
+python rerank -l -0.50102570703 -s -0.998475507076 -t -0.410636403128 | python compute-bleu
+bleu on dev: 0.278628450706
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -0.5}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.388169070638
+setting  p_lex(f|e) from -0.5 to -0.498490824285
+setting  p(e|f) from -0.5 to -0.41393313363
+python rerank -l -0.388169070638 -s -0.498490824285 -t -0.41393313363 | python compute-bleu
+bleu on dev: 0.278297683532
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.24793429054
+setting  p(e|f) from -0.5 to -1.03748489414
+setting  p(e) from -1.0 to -1.07088171878
+python rerank -l -1.07088171878 -s -1.24793429054 -t -1.03748489414 | python compute-bleu
+bleu on dev: 0.28035033699
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -0.5 to -1.65678161597
+setting  p(e) from -1.0 to -0.963669956122
+setting  p_lex(f|e) from -0.5 to -1.37611258269
+python rerank -l -0.963669956122 -s -1.37611258269 -t -1.65678161597 | python compute-bleu
+bleu on dev: 0.276187388813
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.776338141276
+setting  p_lex(f|e) from -1.0 to -0.99698164857
+setting  p(e|f) from -1.0 to -0.827866267259
+python rerank -l -0.776338141276 -s -0.99698164857 -t -0.827866267259 | python compute-bleu
+bleu on dev: 0.278297683532
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -1.14226618197
+setting  p(e|f) from -1.0 to -1.00482846249
+setting  p(e) from -1.0 to -1.00001836804
+python rerank -l -1.00001836804 -s -1.14226618197 -t -1.00482846249 | python compute-bleu
+bleu on dev: 0.280031729505
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.32646348167
+setting  p(e) from -1.0 to -1.01164914088
+setting  p_lex(f|e) from -1.0 to -1.08251990027
+python rerank -l -1.01164914088 -s -1.08251990027 -t -2.32646348167 | python compute-bleu
+bleu on dev: 0.278126640275
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -1.0, 'p_lex(f|e)': -0.5, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -1.0 to -0.437402102379
+setting  p_lex(f|e) from -0.5 to -0.465429034797
+setting  p(e|f) from -1.0 to -1.00163493084
+python rerank -l -0.437402102379 -s -0.465429034797 -t -1.00163493084 | python compute-bleu
+bleu on dev: 0.278001669251
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -0.5 to -1.14226618197
+setting  p(e|f) from -1.0 to -1.00482846249
+setting  p(e) from -1.0 to -1.00001836804
+python rerank -l -1.00001836804 -s -1.14226618197 -t -1.00482846249 | python compute-bleu
+bleu on dev: 0.280031729505
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -1.65678161597
+setting  p(e) from -1.0 to -0.963669956122
+setting  p_lex(f|e) from -0.5 to -1.37611258269
+python rerank -l -0.963669956122 -s -1.37611258269 -t -1.65678161597 | python compute-bleu
+bleu on dev: 0.276187388813
+
+
+******************MERT Run Instance********************
+method: ed
+data train: data/train+dev.100best
+data reference: data/train+dev.ref
+initial feature values: {'p(e)': -0.5, 'p_lex(f|e)': -1.0, 'p(e|f)': -1.0}
+
+initial ordering: ['p(e)', 'p_lex(f|e)', 'p(e|f)']
+
+iteration 0
+setting  p(e) from -0.5 to -0.776338141276
+setting  p_lex(f|e) from -1.0 to -0.99698164857
+setting  p(e|f) from -1.0 to -0.827866267259
+python rerank -l -0.776338141276 -s -0.99698164857 -t -0.827866267259 | python compute-bleu
+bleu on dev: 0.278297683532
+
+
+initial ordering: ['p_lex(f|e)', 'p(e|f)', 'p(e)']
+
+iteration 0
+setting  p_lex(f|e) from -1.0 to -0.505935048129
+setting  p(e|f) from -1.0 to -1.16530857621
+setting  p(e) from -0.5 to -0.499990057544
+python rerank -l -0.499990057544 -s -0.505935048129 -t -1.16530857621 | python compute-bleu
+bleu on dev: 0.27666890187
+
+
+initial ordering: ['p(e|f)', 'p(e)', 'p_lex(f|e)']
+
+iteration 0
+setting  p(e|f) from -1.0 to -2.36059665936
+setting  p(e) from -0.5 to -0.866085898324
+setting  p_lex(f|e) from -1.0 to -1.09523531182
+python rerank -l -0.866085898324 -s -1.09523531182 -t -2.36059665936 | python compute-bleu
+bleu on dev: 0.277458117648
+

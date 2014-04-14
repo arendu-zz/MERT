@@ -4,6 +4,7 @@ import optparse
 import sweep_line as sl
 import bleu
 import subprocess
+import itertools as it
 
 
 def mid_point((x1, x2)):
@@ -36,23 +37,29 @@ def sum_scores_per_range(rd, method):
 
 if __name__ == '__main__':
     optparser = optparse.OptionParser()
-    optparser.add_option("-k", "--kbest-list", dest="input", default="data/train+dev.100best", help="100-best translation lists")
+    optparser.add_option("-k", "--kbest-list", dest="input", default="data/train+dev.100best.new.feats", help="100-best translation lists")
     optparser.add_option("-r", "--reference", dest="reference", default="data/train+dev.ref", help="Target language reference sentences")
     optparser.add_option("-l", "--lm", dest="lm", default=-1.0, type="float", help="Language model weight")
     optparser.add_option("-t", "--tm1", dest="tm1", default=-1.0, type="float", help="Translation model p(e|f) weight")
     optparser.add_option("-s", "--tm2", dest="tm2", default=-1.0, type="float", help="Lexical translation model p_lex(f|e) weight")
-    optparser.add_option("-r", "--lr", dest="lr", default=-1.0, type="float", help="length ratio of the hyp and source lr weight")
+    optparser.add_option("-o", "--lr", dest="lr", default=-1.0, type="float", help="length ratio of the hyp and source lr weight")
+    optparser.add_option("-d", "--ld", dest="ld", default=-1.0, type="float", help="length difference of the hyp and source lr weight")
     optparser.add_option("-u", "--ut", dest="ut", default=-1.0, type="float", help="number of untranslated words ut weight")
 
     optparser.add_option("-m", "--ef", dest="error_function", default="bleu", help="use bleu , editdistance or meteor")
 
     (opts, _) = optparser.parse_args()
-    weights = {'p(e)': float(opts.lm), 'p(e|f)': float(opts.tm1), 'p_lex(f|e)': float(opts.tm2), 'lr': float(opts.lr), 'ut': float(opts.ut)}
-    weights_cmd = {'p(e)': '-l', 'p(e|f)': '-t', 'p_lex(f|e)': '-s', 'lr': '-r', 'ut': '-u'}
+    weights = {'p(e)': float(opts.lm), 'p(e|f)': float(opts.tm1), 'p_lex(f|e)': float(opts.tm2), 'lr': float(opts.lr), 'ld': float(opts.ld),
+               'ut': float(opts.ut)}
+    weights_cmd = {'p(e)': '-l', 'p(e|f)': '-t', 'p_lex(f|e)': '-s', 'lr': '-o', 'ld': '-d', 'ut': '-u'}
     all_hyps = [pair.split(' ||| ') for pair in open(opts.input)]
     all_refs = [ref.strip() for ref in open(opts.reference)]
     num_sents = len(all_hyps) / 100
     ef = opts.error_function
+    old_result = float('-inf')
+    result = 0.0
+    best_result = 0.0
+    best_cmd = ''
     #permutations = it.permutations(weights.keys())
     print ''
     print '******************MERT Run Instance********************'
@@ -60,22 +67,26 @@ if __name__ == '__main__':
     print 'data train:', opts.input
     print 'data reference:', opts.reference
     print 'initial feature values:', weights
-    for o in xrange(len(weights)):
+    for wts in it.permutations(list(weights.keys())):  #xrange(len(weights)):
         weights = {'p(e)': float(opts.lm), 'p(e|f)': float(opts.tm1), 'p_lex(f|e)': float(opts.tm2), 'lr': float(opts.lr),
-                   'ut': float(opts.ut)}
-        wts = list(weights.keys())
-        for _ in xrange(o):
-            wts.append(wts.pop(0))
-        print ''
+                   'ld': float(opts.ld), 'ut': float(opts.ut)}
+
+        #wts = list(weights.keys())
+        #for _ in xrange(o):
+        #    wts.append(wts.pop(0))
+        #print ''
         print 'initial ordering:', wts
-        for p in xrange(1):
+        #for p in xrange(3):
+        p = 0
+        while result - old_result > 0.0001:
+            old_result = result
             print ''
             print 'iteration', p
             for w in wts:
                 inflexion_points = []
-                for s in xrange(0, 800):
+                for s in xrange(0, 400):
                     ref = all_refs[s]
-                    hyps_for_one_sent = all_hyps[s * 100:s * 100 + 100]
+                    hyps_for_one_sent = all_hyps[s * 100:s * 100 + 10]
                     hyp_lines = []
                     for (num, hyp, feats) in hyps_for_one_sent:
                         #compute c and m
@@ -126,13 +137,22 @@ if __name__ == '__main__':
                 print 'setting ', w, 'from', weights[w], 'to', mid_point(min(score_ranges[max(score_ranges)]))
                 weights[w] = mid_point(min(score_ranges[max(score_ranges)]))
 
-            info_str = 'info for trial:' + str(o) + '-' + str(p) + '\n' + 'weights:' + str(weights) + '\nmethod:' + ef
+            #info_str = 'info for trial:' + str(o) + '-' + str(p) + '\n' + 'weights:' + str(weights) + '\nmethod:' + ef
             cmd_opts = ' '.join([str(weights_cmd[i] + ' ' + str(weights[i])) for i in weights])
             #cmd = 'python rerank ' + cmd_opts + ' > outputs/' + str(o) + '-' + str(p) + '.out'
             #print cmd
             #subprocess.call(cmd)
 
-            cmd2 = 'python rerank ' + cmd_opts + ' | python compute-bleu'
+            cmd2 = 'python rerank2 ' + cmd_opts + ' | python compute-bleu'
             print cmd2
             result = subprocess.check_output(cmd2, shell=True)
+            result = float(result)
             print 'bleu on dev:', result
+            if result > best_result:
+                best_cmd = cmd2
+            p += 1
+        old_result = float('-inf')
+        result = 0.0
+
+    print 'best result', best_result
+    print 'best params', best_cmd

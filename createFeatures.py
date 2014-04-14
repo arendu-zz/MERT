@@ -42,8 +42,9 @@ if __name__ == '__main__':
             #    print hyp
             #    print feats
             lrf = ' ' + 'lr=' + str(len_ratio)
+            ldf = ' ' + 'ld=' + str(hyp_len - src_len)
             utf = ' ' + 'ut=' + str(len(untranslated_tokens))
-            new_feats = feats.strip() + lrf + utf
+            new_feats = feats.strip() + lrf + ldf + utf
             new_line = num + ' ||| ' + hyp.strip() + ' ||| ' + new_feats.strip() + '\n'
             writer.write(new_line)
     writer.flush()
