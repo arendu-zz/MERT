@@ -142,7 +142,6 @@ if __name__ == '__main__':
             #cmd = 'python rerank ' + cmd_opts + ' > outputs/' + str(o) + '-' + str(p) + '.out'
             #print cmd
             #subprocess.call(cmd)
-
             cmd2 = 'python rerank2 ' + cmd_opts + ' | python compute-bleu'
             print cmd2
             result = subprocess.check_output(cmd2, shell=True)

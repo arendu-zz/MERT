@@ -1,0 +1,180 @@
+\documentclass[11pt]{article}
+\usepackage{acl2012}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{url}
+\usepackage{setspace} 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage[round]{natbib}
+\newcommand{\lam}{\lambda}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\setlength\titlebox{6.5cm}    % Expanding the titlebox
+
+\title{Machine Translation:N-Best Reranking Assignment}
+
+\author{Adithya Renduchintala \\
+  {\tt adithya.renduchintala@jhu.edu}\\
+  }
+
+\date{}
+
+\begin{document}
+\maketitle
+%\begin{abstract}
+%  This document contains the instructions for preparing a camera-ready
+  % manuscript for the proceedings of ACL2012. The document itself conforms to its own specifications, and is therefore an example of what your manuscript should look like. These instructions should be used for both papers submitted for review and for final versions of accepted papers. Authors are asked to conform to all the directions reported in this document.
+%\end{abstract}
+
+
+\section{Introduction}
+ In this assignment Minimum Error Rate Training (MERT) was implemented to
+ compute weights on a set of features for each hypothesis from a
+ source-hypotheses pair.
+ The best hypothesis was then selected from the provided N-best list of
+ hypotheses.
+ The following error functions were tested a) BLEU score error function, b)
+ METEOR score error function c) Edit Distance score error function. The
+ experiments show that BLEU and METEOR perform the best. In addition to a baseline set of features, 3 new features were added, which improved the overall BLEU score. Experiments were
+ conducted to study the ordering in which each feature was optimized as well as
+ effects of repeated iterations of optimization of the feature set. A final BLEU
+ score of 28.88 was achieved  on the hidden test set.
+
+\section{Minimum Error Rate Training}
+Minimum Error Rate Training is used when we can not directly optimize a set of
+features using a loss function\cite{och2003minimum}. MERT falls out of Log
+Liner modelling where we are attempting to find weights for a set of features to minimize some loss
+function.Let a translation score of a hypothesis be a weighted sum of its
+corresponding features.
+\begin{align*}
+f(\hat{\lam}) &= \sum_{w=1}^W \lam_w h_w(e,f)
+\end{align*}
+MERT uses the fact that if only one weight $\lam_k$, is allowed to
+change.
+\begin{align*}
+f(\hat{\lam}) &= h_k(e,f)\lam_k + \sum_{w=1,w \neq k}^W \lam_wh_w(e,f)
+\end{align*} 
+The resulting expression is that of a line with a slope equal to
+$M = h_k(e,f)$ and the intercept equal to $C = \sum_{w=1,w \neq k}^W \lam_w
+h_w(e,f)$.\\
+Thus for $N$ hypothesis we can obtain $N$ lines with different values
+of slope and intercept along 1 feature. By super-imposing these lines, we can
+use the sweep line algorithm in \cite{macherey2008lattice} to compute the upper
+envelope of these set of lines. The lowest point in this envelope represents the
+lowest translation score that we can observe, but we are not interested in
+minimizing the translation score, we would like to minimize some other error
+function that we believe correlates with the final evaluation metric. Thus for
+each section of the upper envelope we can compute the error as per our error
+function for the N lines segments in that section. Plotting the error function
+will result in a piece-wise continue function along the feature $\lam_k$ in
+question. MERT then allows us to trivially search the space of values for
+$\lam_k$ which result in the lowest error. This process, however, is for just
+one source sentence and its corresponding N-best list of hypothesis. In order to
+get the best feature scaling we compute the error surface for source-hypothesis
+pairs in our training set and then find the best $\lam_k$.\\ This process is
+then repeated for each of the $\lam_w$.
+ \section{Error Functions}
+In this assignment the final evaluation metric is the BLEU score, so the obvious
+choice for a error function during MERT would be the BLEU metric itself. Apart
+from BLEU, we also experimented with METEOR and a Edit Distance based metric as
+error functions.We define $ED$ our edit distance based metric below.
+\begin{align*}
+ED &= 1 - \frac{editdistance(e,r)}{max(\mid e \mid , \mid r \mid)}
+\end{align*}
+This allows us to unify our maximization since higher scores of BLEU, METER and
+ED correspond to improved selection of feature weights.\\
+
+We found that METER did better than BLEU in several configurations of
+MERT, where a configuration is a ordering for feature optimization. Edit
+Distance error function did not generalize to a high BLEU score in the
+development set.
+Further more the BLEU metric is slower to compute than METEOR, making METEOR a
+good choice for quick experimentation. Below are the results on using these
+error functions on 400 sample training set and evaluating on 400
+sample development set.
+\begin{table}[h]
+\begin{center}
+\begin{singlespace}
+\begin{tabular}{|l|l|l|l|l|}
+\hline \bf Error Func. &  \bf BLEU on dev \\ \hline
+1.BLEU & 0.2749 \\
+2.METEOR & 0.2762\\
+3.ED & 0.2735\\
+\hline
+\end{tabular}
+\end{singlespace}
+\end{center}
+\caption{ BLEU score after training with different error functions. The features
+used were $p(e)$, $p_lex(f|e)$ and $p(e|f)$ with initial values $-1.0$, $-0.5$
+and $-0.5$.}
+\end{table}
+On this train and development set we see that METEOR scores higher than BLEU.
+\section{Iterations of MERT}
+Since MERT is sensitive to values of the features weights that are kept
+constant, we experimented with repeated iterations of the feature weight
+training. That is, we ran several passes of MERT each time using the feature
+weights set from the previous iteration. For each iteration we checked our
+performance on the development set. We find that further iteration does not
+improve the performance on the development set. In some cases MERT iteration
+shows a drop in BLEU score on the development set. We should note, however, that
+this is sensitive to the order in which the features are selected during each
+iteration.\\
+In general multiple iterations did not seem to help for this set of features.
+Indicating that a local maximum is reached pretty quickly during MERT training.
+ \section{Additional Features}
+ The based line features used were (a) $p(e)$ the language model probability of
+ the hypothesis, (b) $p_lex(f|e)$ the lexical translation model probability and
+ (c)  $p(e|f)$ the translation model probability of the hypothesis. Based on the
+ previous experiments, the new features (described here) were tested only using the
+  BLEU and METEOR error functions. The following features were added, (a) $ut$ the 
+  number of tokens in the hypothesis that appear untranslated, (b) $ld$ the
+  difference between the length of source sentence and hypothesis and (c) $lr$ the ratio of the two lengths. In this scenario we found
+ that the order of the MERT optimization affected the MERT performance
+ significantly. Optimizing either $ld$ or $ut$ gave highest BLEU scores while
+ optimizing $p(e)$, $p(e|f)$ did not give as high BLEU scores. Some set of
+ predefined order were selected based on trial and error. Trying or all
+ permutations for ordering would be too time consuming.
+ \begin{table}[h]
+\begin{center}
+\begin{singlespace}
+\begin{tabular}{|l|l|l|l|l|}
+\hline \bf Ordering &  \bf BLEU on dev \\ \hline
+$ut$, $lr$, $p(e)$, $p_lex(f|e)$, $p(e|f)$ & 0.2858 \\
+$p_lex(f|e)$, $p(e|f)$, $ut$, $lr$, $p(e)$  & 0.2688 \\
+$p(e)$, $p_lex(f|e)$, $p(e|f)$, $ut$, $lr$ & 0.2781\\
+\hline
+\end{tabular}
+\end{singlespace}
+\end{center}
+\caption{ BLEU score after training with different ordering of features using
+the BLEU error function. (all features weights set to $-1$ initially)}
+\end{table}
+Similar results were noticed with the METEOR error function.\\
+\section{Results}
+Using the best ordering and the 2 best error functions, MERT was used to train a
+features weights from the training and development set. The best results on a
+development set evaluation were published for the hidden test set evaluation.
+ \begin{table}[h]
+\begin{center}
+\begin{singlespace}
+\begin{tabular}{|l|l|l|l|l|}
+\hline \bf Error Function &  \bf BLEU on test \\ \hline
+BLEU &28.88 \\
+METEOR  &28.81 \\
+\hline
+\end{tabular}
+\end{singlespace}
+\end{center}
+\caption{BLUE scores on the hidden test set}
+\end{table}
+It can be seen that the METEOR did very close to the BLEU error function. Runtime 
+for one pass through all the features took 7.477s using METEOR, and around
+14.812s using BLEU.  This is interesting because METEOR is faster to train, and 
+still does almost as well as BLEU.Larger data sets might be required to further
+test this claim.
+\bibliographystyle{plainnat}
+\bibliography{bib}{} 
+\end{document}
