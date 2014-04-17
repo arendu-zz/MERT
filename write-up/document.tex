@@ -14,7 +14,7 @@
 \DeclareMathOperator*{\argmax}{arg\,max}
 \setlength\titlebox{6.5cm}    % Expanding the titlebox
 
-\title{Machine Translation:N-Best Reranking Assignment}
+\title{Machine Translation:Reranking Assignment}
 
 \author{Adithya Renduchintala \\
   {\tt adithya.renduchintala@jhu.edu}\\
@@ -45,7 +45,7 @@
 
 \section{Minimum Error Rate Training}
 Minimum Error Rate Training is used when we can not directly optimize a set of
-features using a loss function\cite{och2003minimum}. MERT falls out of Log
+features using a loss function (\cite{och2003minimum}). MERT falls out of Log
 Liner modelling where we are attempting to find weights for a set of features to minimize some loss
 function.Let a translation score of a hypothesis be a weighted sum of its
 corresponding features.
@@ -80,14 +80,21 @@ then repeated for each of the $\lam_w$.
 In this assignment the final evaluation metric is the BLEU score, so the obvious
 choice for a error function during MERT would be the BLEU metric itself. Apart
 from BLEU, we also experimented with METEOR and a Edit Distance based metric as
-error functions.We define $ED$ our edit distance based metric below.
+error functions. The METEOR metric is defined by:
 \begin{align*}
-ED &= 1 - \frac{editdistance(e,r)}{max(\mid e \mid , \mid r \mid)}
+R(h,r) &= \frac{\mid h \cap r \mid}{\mid r \mid}\\
+P(h,r) &= \frac{\mid h \cap r \mid}{\mid h \mid}\\
+M &= \frac{R \cdot P}{(1-\alpha)R + \alpha P}\
 \end{align*}
-This allows us to unify our maximization since higher scores of BLEU, METER and
-ED correspond to improved selection of feature weights.\\
-
-We found that METER did better than BLEU in several configurations of
+The $\alpha$ parameter was set to 0.5. We define $ED$, our edit distance based
+metric below.
+\begin{align*}
+ED &= 1 - \frac{editdistance(h,r)}{max(\mid h \mid , \mid r \mid)}
+\end{align*}
+Here $h$ is one hypothesis form the N-Best list, and $r$ is the reference
+translation. This allows us to unify our maximization since higher scores of
+BLEU, METEOR and ED correspond to improved selection of feature weights.\\
+We found that METEOR did better than BLEU in several configurations of
 MERT, where a configuration is a ordering for feature optimization. Edit
 Distance error function did not generalize to a high BLEU score in the
 development set.
@@ -111,7 +118,6 @@ sample development set.
 used were $p(e)$, $p_lex(f|e)$ and $p(e|f)$ with initial values $-1.0$, $-0.5$
 and $-0.5$.}
 \end{table}
-On this train and development set we see that METEOR scores higher than BLEU.
 \section{Iterations of MERT}
 Since MERT is sensitive to values of the features weights that are kept
 constant, we experimented with repeated iterations of the feature weight
@@ -133,10 +139,12 @@ Indicating that a local maximum is reached pretty quickly during MERT training.
   number of tokens in the hypothesis that appear untranslated, (b) $ld$ the
   difference between the length of source sentence and hypothesis and (c) $lr$ the ratio of the two lengths. In this scenario we found
  that the order of the MERT optimization affected the MERT performance
- significantly. Optimizing either $ld$ or $ut$ gave highest BLEU scores while
- optimizing $p(e)$, $p(e|f)$ did not give as high BLEU scores. Some set of
- predefined order were selected based on trial and error. Trying or all
- permutations for ordering would be too time consuming.
+ significantly. The $ut$ feature was calculated by the set subtraction of types
+ in the target from the types in the source (ignoring punctuations and
+ numerical values). Optimizing either $ld$ or $ut$ gave highest BLEU scores
+ while optimizing $p(e)$, $p(e|f)$ did not give as high BLEU scores. A set of 
+ predefined orders were selected based on trial and error. Trying or all
+ permutations for ordering would be too time consuming ($6!$ orderings).
  \begin{table}[h]
 \begin{center}
 \begin{singlespace}
@@ -173,7 +181,7 @@ METEOR  &28.81 \\
 It can be seen that the METEOR did very close to the BLEU error function. Runtime 
 for one pass through all the features took 7.477s using METEOR, and around
 14.812s using BLEU.  This is interesting because METEOR is faster to train, and 
-still does almost as well as BLEU.Larger data sets might be required to further
+still does almost as well as BLEU. Larger data sets might be required to further
 test this claim.
 \bibliographystyle{plainnat}
 \bibliography{bib}{} 
